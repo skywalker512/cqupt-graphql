@@ -6,12 +6,15 @@ import { LoggerMiddleware, logger } from './common/middleware/logger.middleware'
 import { CatsController } from './cats/cats.controller';
 import { APP_PIPE } from '@nestjs/core';
 // import { ValidationPipe } from './common/pipe/validation.pipe';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [CatsModule],
+  imports: [CatsModule, UsersModule, AuthModule],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_PIPE,
+    // 判断传入是否正确
     useClass: ValidationPipe,
   }],
 })
