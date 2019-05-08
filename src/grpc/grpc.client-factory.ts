@@ -3,7 +3,7 @@ import { Client, ClientGrpc, GrpcOptions, Transport } from '@nestjs/microservice
 import { join } from 'path';
 
 @Injectable()
-export class NotaddGrpcClientFactory {
+export class GrpcClientFactory {
     @Client(generateGrpcOptions('localhost:50053', 'cqupt_user', 'user.proto'))
     public readonly userModuleClient: ClientGrpc;
 }

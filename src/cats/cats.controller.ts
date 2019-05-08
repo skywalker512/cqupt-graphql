@@ -4,18 +4,18 @@ import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 import { HttpExceptionFilter } from 'src/common/filter/http-exception.filter';
 import { AuthGuard } from '@nestjs/passport';
-import { NotaddGrpcClientFactory } from '@/src/grpc/grpc.client-factory';
+import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { cqupt_user } from '../grpc/generated';
 
 @Controller('cats')
 // @UseFilters(HttpExceptionFilter)
 export class CatsController implements OnModuleInit {
   onModuleInit() {
-    this.userService = this.notaddGrpcClientFactory.userModuleClient.getService('UserController');
+    this.userService = this.grpcClientFactory.userModuleClient.getService('UserController');
   }
   constructor(
     private readonly catsService: CatsService,
-    @Inject(NotaddGrpcClientFactory) private readonly notaddGrpcClientFactory: NotaddGrpcClientFactory
+    @Inject(GrpcClientFactory) private readonly grpcClientFactory: GrpcClientFactory
   ) {}
   private userService: cqupt_user.UserController
   @Post()

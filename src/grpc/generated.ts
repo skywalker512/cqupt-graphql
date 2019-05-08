@@ -26,40 +26,28 @@ export namespace cqupt_user {
     export interface UserController {
 
         /**
-         * Calls CreateUser.
-         * @param request CreateUserRequest message or plain object
+         * Calls Register.
+         * @param request RegisterReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        createUser(request: cqupt_user.CreateUserRequest, metadata?: grpc.Metadata): Observable<cqupt_user.StringDataResponse>;
+        register(request: cqupt_user.RegisterReq, metadata?: grpc.Metadata): Observable<cqupt_user.RegisterRes>;
 
         /**
          * Calls FindAllUsers.
-         * @param request FindDataByPageRequest message or plain object
+         * @param request FindDataByPageReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findAllUsers(request: cqupt_user.FindDataByPageRequest, metadata?: grpc.Metadata): Observable<cqupt_user.FindAllUsersResponse>;
-    }
+        findAllUsers(request: cqupt_user.FindDataByPageReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindAllUsersRes>;
 
-    /** Properties of a CreateUserRequest. */
-    export interface CreateUserRequest {
-
-        /** CreateUserRequest createUserInput */
-        createUserInput?: (cqupt_user.CreateUserRequest.CreateUserInput|null);
-    }
-
-    export namespace CreateUserRequest {
-
-        /** Properties of a CreateUserInput. */
-        export interface CreateUserInput {
-
-            /** CreateUserInput mobile */
-            mobile?: (string|null);
-
-            /** CreateUserInput password */
-            password?: (string|null);
-        }
+        /**
+         * Calls Login.
+         * @param request LoginReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        login(request: cqupt_user.LoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.LoginRes>;
     }
 
     /** Properties of a StringDataResponse. */
@@ -71,31 +59,8 @@ export namespace cqupt_user {
         /** StringDataResponse message */
         message?: (string|null);
 
-        /** StringDataResponse data */
-        data?: (string|null);
-    }
-
-    /** Properties of a FindAllUsersResponse. */
-    export interface FindAllUsersResponse {
-
-        /** FindAllUsersResponse code */
-        code?: (number|null);
-
-        /** FindAllUsersResponse message */
-        message?: (string|null);
-
-        /** FindAllUsersResponse result */
-        result?: (cqupt_user.UserData[]|null);
-    }
-
-    /** Properties of a FindDataByPageRequest. */
-    export interface FindDataByPageRequest {
-
-        /** FindDataByPageRequest pageNumber */
-        pageNumber?: (number|null);
-
-        /** FindDataByPageRequest pageSize */
-        pageSize?: (number|null);
+        /** StringDataResponse result */
+        result?: (string|null);
     }
 
     /** Properties of a UserData. */
@@ -112,5 +77,110 @@ export namespace cqupt_user {
 
         /** UserData updatedAt */
         updatedAt?: (string|null);
+    }
+
+    /** Properties of a TokenInfo. */
+    export interface TokenInfo {
+
+        /** TokenInfo expiresIn */
+        expiresIn?: (number|null);
+
+        /** TokenInfo accessToken */
+        accessToken?: (string|null);
+    }
+
+    /** Properties of a RegisterReq. */
+    export interface RegisterReq {
+
+        /** RegisterReq mobile */
+        mobile?: (string|null);
+
+        /** RegisterReq password */
+        password?: (string|null);
+    }
+
+    /** Properties of a RegisterRes. */
+    export interface RegisterRes {
+
+        /** RegisterRes code */
+        code?: (number|null);
+
+        /** RegisterRes message */
+        message?: (string|null);
+
+        /** RegisterRes result */
+        result?: (cqupt_user.RegisterRes.RegisterResult|null);
+    }
+
+    export namespace RegisterRes {
+
+        /** Properties of a RegisterResult. */
+        export interface RegisterResult {
+
+            /** RegisterResult tokenInfo */
+            tokenInfo?: (cqupt_user.TokenInfo|null);
+
+            /** RegisterResult user */
+            user?: (cqupt_user.UserData|null);
+        }
+    }
+
+    /** Properties of a LoginReq. */
+    export interface LoginReq {
+
+        /** LoginReq mobile */
+        mobile?: (string|null);
+
+        /** LoginReq password */
+        password?: (string|null);
+    }
+
+    /** Properties of a LoginRes. */
+    export interface LoginRes {
+
+        /** LoginRes code */
+        code?: (number|null);
+
+        /** LoginRes message */
+        message?: (string|null);
+
+        /** LoginRes result */
+        result?: (cqupt_user.LoginRes.LoginResult|null);
+    }
+
+    export namespace LoginRes {
+
+        /** Properties of a LoginResult. */
+        export interface LoginResult {
+
+            /** LoginResult tokenInfo */
+            tokenInfo?: (cqupt_user.TokenInfo|null);
+
+            /** LoginResult user */
+            user?: (cqupt_user.UserData|null);
+        }
+    }
+
+    /** Properties of a FindAllUsersRes. */
+    export interface FindAllUsersRes {
+
+        /** FindAllUsersRes code */
+        code?: (number|null);
+
+        /** FindAllUsersRes message */
+        message?: (string|null);
+
+        /** FindAllUsersRes result */
+        result?: (cqupt_user.UserData[]|null);
+    }
+
+    /** Properties of a FindDataByPageReq. */
+    export interface FindDataByPageReq {
+
+        /** FindDataByPageReq pageNumber */
+        pageNumber?: (number|null);
+
+        /** FindDataByPageReq pageSize */
+        pageSize?: (number|null);
     }
 }
