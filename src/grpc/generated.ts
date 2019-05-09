@@ -42,6 +42,14 @@ export namespace cqupt_user {
         login(request: cqupt_user.LoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserRes>;
 
         /**
+         * Calls FindOneUser.
+         * @param request FindOneUserReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        findOneUser(request: cqupt_user.FindOneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindOneUserRes>;
+
+        /**
          * Calls FindAllUsers.
          * @param request FindDataByPageReq message or plain object
          *  * @param metadata Optional metadata
@@ -109,19 +117,6 @@ export namespace cqupt_user {
         password?: (string|null);
     }
 
-    /** Properties of a FindAllUsersRes. */
-    export interface FindAllUsersRes {
-
-        /** FindAllUsersRes code */
-        code?: (number|null);
-
-        /** FindAllUsersRes message */
-        message?: (string|null);
-
-        /** FindAllUsersRes result */
-        result?: (cqupt_user.UserData[]|null);
-    }
-
     /** Properties of a UserRes. */
     export interface UserRes {
 
@@ -132,7 +127,7 @@ export namespace cqupt_user {
         message?: (string|null);
 
         /** UserRes result */
-        result?: (cqupt_user.UserRes.UserResult[]|null);
+        result?: (cqupt_user.UserRes.UserResult|null);
     }
 
     export namespace UserRes {
@@ -156,5 +151,48 @@ export namespace cqupt_user {
 
         /** FindDataByPageReq pageSize */
         pageSize?: (number|null);
+    }
+
+    /** Properties of a FindUserResult. */
+    export interface FindUserResult {
+
+        /** FindUserResult user */
+        user?: (cqupt_user.UserData|null);
+    }
+
+    /** Properties of a FindAllUsersRes. */
+    export interface FindAllUsersRes {
+
+        /** FindAllUsersRes code */
+        code?: (number|null);
+
+        /** FindAllUsersRes message */
+        message?: (string|null);
+
+        /** FindAllUsersRes result */
+        result?: (cqupt_user.FindUserResult[]|null);
+    }
+
+    /** Properties of a FindOneUserReq. */
+    export interface FindOneUserReq {
+
+        /** FindOneUserReq mobile */
+        mobile?: (string|null);
+
+        /** FindOneUserReq type */
+        type?: (string|null);
+    }
+
+    /** Properties of a FindOneUserRes. */
+    export interface FindOneUserRes {
+
+        /** FindOneUserRes code */
+        code?: (number|null);
+
+        /** FindOneUserRes message */
+        message?: (string|null);
+
+        /** FindOneUserRes result */
+        result?: (cqupt_user.FindUserResult|null);
     }
 }

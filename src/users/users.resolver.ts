@@ -15,12 +15,19 @@ export class UsersResolver {
   private userService: cqupt_user.UserController
 
   @Query('login')
-  async login(@Args() args: { mobile: string, password: string }) {
-    return await this.userService.login(args).toPromise();
+  async login(@Args() args: { mobile: string, code: string }) {
+    try {
+      await this.userService.findOneUser({ mobile: args.mobile, type: 'mobile' }).toPromise()
+    } catch (error) {
+      if (error.code === 404) {
+        return await this.userService.register({ mobile: args.mobile, password: args.mobile + 'key' }).toPromise()
+      }
+    }
+    return await this.userService.login({ mobile: args.mobile, password: args.mobile + 'key' }).toPromise();
   }
 
-  @Mutation('register')
-  async register(@Args() args: { mobile: string, password: string }) {
-    return await this.userService.register(args).toPromise();
+  @Query('sendCode')
+  async sendCode(@Args() args: { mobile: string }) {
+    return { code: 200, message: '验证码发送成功' }
   }
 }

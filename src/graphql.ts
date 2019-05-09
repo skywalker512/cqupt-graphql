@@ -5,13 +5,15 @@
  */
 
 /* tslint:disable */
-export interface IMutation {
-    register(mobile: string, password: string): UserRes | Promise<UserRes>;
+export interface IQuery {
+    login(mobile: string, code: string): UserRes | Promise<UserRes>;
+    sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
+    temp__(): boolean | Promise<boolean>;
 }
 
-export interface IQuery {
-    login(mobile: string, password: string): UserRes | Promise<UserRes>;
-    temp__(): boolean | Promise<boolean>;
+export interface SendCodeRes {
+    code?: number;
+    message?: string;
 }
 
 export interface StringDataResponse {
@@ -35,7 +37,7 @@ export interface UserData {
 export interface UserRes {
     code?: number;
     message?: string;
-    result?: UserResult[];
+    result?: UserResult;
 }
 
 export interface UserResult {

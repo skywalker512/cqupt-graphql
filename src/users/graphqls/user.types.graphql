@@ -1,9 +1,6 @@
 type Query {
-    login(mobile: String!, password: String!): UserRes
-}
-
-type Mutation {
-    register(mobile: String!, password: String!): UserRes
+    login(mobile: String!, code: String!): UserRes
+    sendCode(mobile: String!): SendCodeRes
 }
 
 type StringDataResponse {
@@ -27,10 +24,15 @@ type TokenInfo {
 type UserRes {
     code: Int
     message: String
-    result: [UserResult]
+    result: UserResult
 }
 
 type UserResult {
     tokenInfo: TokenInfo
     user: UserData
+}
+
+type SendCodeRes {
+    code: Int
+    message: String
 }
