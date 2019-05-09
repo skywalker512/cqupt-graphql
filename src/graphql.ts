@@ -5,19 +5,19 @@
  */
 
 /* tslint:disable */
-export interface RegisterUserInput {
-    mobile?: string;
-    password: string;
-}
-
 export interface IMutation {
-    register(mobile: string, password: string): UserResponse | Promise<UserResponse>;
+    register(mobile: string, password: string): UserRes | Promise<UserRes>;
 }
 
 export interface IQuery {
-    login(mobile: string, password: string): UserResponse | Promise<UserResponse>;
-    test(mobile: string, password: string): UserResponse | Promise<UserResponse>;
+    login(mobile: string, password: string): UserRes | Promise<UserRes>;
     temp__(): boolean | Promise<boolean>;
+}
+
+export interface StringDataResponse {
+    code?: number;
+    message?: string;
+    result?: string;
 }
 
 export interface TokenInfo {
@@ -32,10 +32,10 @@ export interface UserData {
     updatedAt?: string;
 }
 
-export interface UserResponse {
+export interface UserRes {
     code?: number;
     message?: string;
-    result?: UserResult;
+    result?: UserResult[];
 }
 
 export interface UserResult {

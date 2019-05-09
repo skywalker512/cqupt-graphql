@@ -1,27 +1,15 @@
 type Query {
-    login(mobile: String!, password: String!): UserResponse
-    test(mobile: String!, password: String!): UserResponse
-    
+    login(mobile: String!, password: String!): UserRes
 }
 
 type Mutation {
-    register(mobile: String!, password: String!): UserResponse
+    register(mobile: String!, password: String!): UserRes
 }
 
-input RegisterUserInput {
-    mobile: String
-    password: String!
-}
-
-type UserResponse {
+type StringDataResponse {
     code: Int
     message: String
-    result: UserResult
-}
-
-type UserResult {
-    tokenInfo: TokenInfo
-    user: UserData
+    result: String
 }
 
 type UserData {
@@ -34,4 +22,15 @@ type UserData {
 type TokenInfo {
     expiresIn: Int
     accessToken: String
+}
+
+type UserRes {
+    code: Int
+    message: String
+    result: [UserResult]
+}
+
+type UserResult {
+    tokenInfo: TokenInfo
+    user: UserData
 }

@@ -31,7 +31,15 @@ export namespace cqupt_user {
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        register(request: cqupt_user.RegisterReq, metadata?: grpc.Metadata): Observable<cqupt_user.RegisterRes>;
+        register(request: cqupt_user.RegisterReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserRes>;
+
+        /**
+         * Calls Login.
+         * @param request LoginReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        login(request: cqupt_user.LoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserRes>;
 
         /**
          * Calls FindAllUsers.
@@ -40,14 +48,6 @@ export namespace cqupt_user {
          * @returns Promise
          */
         findAllUsers(request: cqupt_user.FindDataByPageReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindAllUsersRes>;
-
-        /**
-         * Calls Login.
-         * @param request LoginReq message or plain object
-         *  * @param metadata Optional metadata
-         * @returns Promise
-         */
-        login(request: cqupt_user.LoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.LoginRes>;
     }
 
     /** Properties of a StringDataResponse. */
@@ -99,32 +99,6 @@ export namespace cqupt_user {
         password?: (string|null);
     }
 
-    /** Properties of a RegisterRes. */
-    export interface RegisterRes {
-
-        /** RegisterRes code */
-        code?: (number|null);
-
-        /** RegisterRes message */
-        message?: (string|null);
-
-        /** RegisterRes result */
-        result?: (cqupt_user.RegisterRes.RegisterResult|null);
-    }
-
-    export namespace RegisterRes {
-
-        /** Properties of a RegisterResult. */
-        export interface RegisterResult {
-
-            /** RegisterResult tokenInfo */
-            tokenInfo?: (cqupt_user.TokenInfo|null);
-
-            /** RegisterResult user */
-            user?: (cqupt_user.UserData|null);
-        }
-    }
-
     /** Properties of a LoginReq. */
     export interface LoginReq {
 
@@ -133,32 +107,6 @@ export namespace cqupt_user {
 
         /** LoginReq password */
         password?: (string|null);
-    }
-
-    /** Properties of a LoginRes. */
-    export interface LoginRes {
-
-        /** LoginRes code */
-        code?: (number|null);
-
-        /** LoginRes message */
-        message?: (string|null);
-
-        /** LoginRes result */
-        result?: (cqupt_user.LoginRes.LoginResult|null);
-    }
-
-    export namespace LoginRes {
-
-        /** Properties of a LoginResult. */
-        export interface LoginResult {
-
-            /** LoginResult tokenInfo */
-            tokenInfo?: (cqupt_user.TokenInfo|null);
-
-            /** LoginResult user */
-            user?: (cqupt_user.UserData|null);
-        }
     }
 
     /** Properties of a FindAllUsersRes. */
@@ -172,6 +120,32 @@ export namespace cqupt_user {
 
         /** FindAllUsersRes result */
         result?: (cqupt_user.UserData[]|null);
+    }
+
+    /** Properties of a UserRes. */
+    export interface UserRes {
+
+        /** UserRes code */
+        code?: (number|null);
+
+        /** UserRes message */
+        message?: (string|null);
+
+        /** UserRes result */
+        result?: (cqupt_user.UserRes.UserResult[]|null);
+    }
+
+    export namespace UserRes {
+
+        /** Properties of a UserResult. */
+        export interface UserResult {
+
+            /** UserResult tokenInfo */
+            tokenInfo?: (cqupt_user.TokenInfo|null);
+
+            /** UserResult user */
+            user?: (cqupt_user.UserData|null);
+        }
     }
 
     /** Properties of a FindDataByPageReq. */
