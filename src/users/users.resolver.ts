@@ -1,7 +1,8 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
-import { Inject } from '@nestjs/common';
+import { Inject, UseGuards } from '@nestjs/common';
 import { cqupt_user } from '../grpc/generated';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Resolver('Users')
 export class UsersResolver {
@@ -27,6 +28,7 @@ export class UsersResolver {
   }
 
   @Query('sendCode')
+  // @UseGuards(AuthGuard)
   async sendCode(@Args() args: { mobile: string }) {
     return { code: 200, message: '验证码发送成功' }
   }

@@ -18,14 +18,14 @@ export class AuthService implements OnModuleInit {
     /**
      * whitelist
      */
-    if (req.body && (['IntrospectionQuery', 'sayHello', 'login', 'adminLogin', 'register'].some(item => req.body.query.includes(item)))) {
+    if (req.body && (['IntrospectionQuery', 'login', 'adminLogin', 'register'].some(item => req.body.query.includes(item)))) {
       return;
     }
 
-    let token = req.headers.authorization as string;
-    if (!token) {
+    if (!req.headers.authorization) {
       throw new AuthenticationError('请求头中应该有 Authorization 字段');
     }
+    let token = req.headers.authorization as string;
 
     if (token.slice(0, 6) === 'Bearer') {
       token = token.slice(7);
@@ -34,7 +34,10 @@ export class AuthService implements OnModuleInit {
     }
 
     try {
-      const decodedToken = <{ loginName: string }>jwt.verify(token, 'secretKey');
+      const decodedToken = <{ mobile?: string, iat: number, exp: number }>jwt.verify(token, 'secretKey');
+      const loginType = Object.keys(decodedToken)[0]
+      const user = { loginType, loginInfo: decodedToken[loginType], decodedToken }
+      return user
     } catch (error) {
       if (error instanceof jwt.JsonWebTokenError) {
         throw new AuthenticationError('Authorization code 出错');

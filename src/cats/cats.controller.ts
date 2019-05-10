@@ -3,7 +3,6 @@ import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 import { HttpExceptionFilter } from 'src/common/filter/http-exception.filter';
-import { AuthGuard } from '@nestjs/passport';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { cqupt_user } from '../grpc/generated';
 

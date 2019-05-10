@@ -2,14 +2,13 @@ import { Inject, Injectable } from '@nestjs/common';
 import { GqlModuleOptions, GqlOptionsFactory } from '@nestjs/graphql';
 // import * as GraphQLJSON from 'graphql-type-json';
 import { join } from 'path';
-
-// import { AuthService } from './modules/user/auth/auth.service';
+// import { AuthService } from './auth/auth.service';
 
 @Injectable()
 export class GraphQLConfigService implements GqlOptionsFactory {
-    constructor(
-        // @Inject(AuthService) private readonly authService: AuthService
-    ) { }
+    // constructor(
+    //     @Inject(AuthService) private readonly authService: AuthService
+    // ) { }
 
     createGqlOptions(): GqlModuleOptions {
         return {
@@ -19,8 +18,7 @@ export class GraphQLConfigService implements GqlOptionsFactory {
                 path: join(process.cwd(), 'src/graphql.ts'),
             },
             context: async ({ req }) => {
-                // const user = await this.authService.validateUser(req);
-                // return { req, user };
+                return { req };
             }
         };
     }
