@@ -1,9 +1,5 @@
 import { Module, ValidationPipe, Global } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CatsModule } from './cats/cats.module';
 import { APP_PIPE } from '@nestjs/core';
-// import { ValidationPipe } from './common/pipe/validation.pipe';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
@@ -14,10 +10,8 @@ import { GraphQLConfigService } from './graphql-config.service';
 @Module({
   imports: [GraphQLModule.forRootAsync({
     useClass: GraphQLConfigService
-  }), CatsModule, UsersModule, AuthModule],
-  controllers: [AppController],
+  }), UsersModule, AuthModule],
   providers: [
-    AppService,
     {
       provide: APP_PIPE,
       // 判断传入是否正确
