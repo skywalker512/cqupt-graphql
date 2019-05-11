@@ -18,13 +18,6 @@ export class UsersResolver implements OnModuleInit {
   @Query('login')
   async login(@Args() args: { mobile: string, code: string }) {
     const { mobile, code } = args
-    try {
-      await this.userService.findOneUser({ data: { mobile } }).toPromise()
-    } catch (error) {
-      if (error.code === 404) {
-        return await this.userService.creatUser({ data: { mobile } }).toPromise()
-      }
-    }
     return await this.userService.login({ data: { mobile } }).toPromise();
   }
 

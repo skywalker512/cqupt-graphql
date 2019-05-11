@@ -15,6 +15,7 @@ export interface Card {
     status?: string;
     LostTime?: string;
     foundTime?: string;
+    department?: Department;
 }
 
 export interface CreatCardRes {
@@ -47,8 +48,8 @@ export interface LostCardRes {
 
 export interface IMutation {
     creatLostCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): LostCardRes | Promise<LostCardRes>;
-    creatDepartment(name: string): DataRes | Promise<DataRes>;
     creatCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): DataRes | Promise<DataRes>;
+    creatDepartment(name: string): DataRes | Promise<DataRes>;
 }
 
 export interface IQuery {
@@ -80,6 +81,7 @@ export interface UserData {
     mobile?: string;
     createdAt?: string;
     updatedAt?: string;
+    card?: Card;
 }
 
 export interface UserRes {
