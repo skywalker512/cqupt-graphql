@@ -1,22 +1,26 @@
-import { Module, ValidationPipe, Global } from '@nestjs/common';
-import { APP_PIPE } from '@nestjs/core';
+import { Module, Global } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GraphQLConfigService } from './graphql-config.service';
+import { CardModule } from './card/card.module';
+import { DepartmentModule } from './department/department.module';
 
 @Global()
 @Module({
-  imports: [GraphQLModule.forRootAsync({
-    useClass: GraphQLConfigService
-  }), UsersModule, AuthModule],
+  imports: [
+    GraphQLModule.forRootAsync({
+      useClass: GraphQLConfigService
+    }), 
+    TypeOrmModule.forRoot(),
+    UsersModule, 
+    AuthModule, 
+    CardModule, 
+    DepartmentModule,
+  ],
   providers: [
-    {
-      provide: APP_PIPE,
-      // 判断传入是否正确
-      useClass: ValidationPipe,
-    },
     GrpcClientFactory,
   ],
   exports: [GrpcClientFactory],
