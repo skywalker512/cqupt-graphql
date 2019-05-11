@@ -1,0 +1,23 @@
+type Mutation {
+    creatDepartment(name: String!): DataRes
+}
+
+type Query {
+    findAllDepartments: findAllDepartmentsRes
+}
+
+type DataRes {
+    code: Int
+    message: String
+}
+
+type Department {
+    id: String
+    name: String
+}
+
+type findAllDepartmentsRes {
+    code: Int
+    message: String
+    result: [Department]
+}
