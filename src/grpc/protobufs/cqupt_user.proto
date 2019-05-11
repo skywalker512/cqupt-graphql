@@ -112,3 +112,5 @@ message CardRes {
   string message = 2;
   Card card = 3;
 }
+
+

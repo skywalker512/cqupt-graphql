@@ -12,10 +12,10 @@ export class DepartmentResolver implements OnModuleInit {
     this.departmentService = this.grpcClientFactory.userModuleClient.getService('DepartmentController');
   }
   private departmentService: cqupt_user.DepartmentController
+
   @Mutation()
-  async creatDepartment(@Args() agrs: { name: string }) {
-    const { name } = agrs
-    return await this.departmentService.creatDepartment({ name })
+  async creatDepartment(@Args() agrs: cqupt_user.DepartmentReq) {
+    return await this.departmentService.creatDepartment(agrs)
   }
 
   @Query()
