@@ -18,7 +18,7 @@ export interface Department {
 export interface FindAllDepartmentsRes {
     code?: number;
     message?: string;
-    result?: Department[];
+    departments?: Department[];
 }
 
 export interface IMutation {
@@ -49,7 +49,7 @@ export interface TokenInfo {
 }
 
 export interface UserData {
-    id?: number;
+    id?: string;
     mobile?: string;
     createdAt?: string;
     updatedAt?: string;
@@ -58,10 +58,6 @@ export interface UserData {
 export interface UserRes {
     code?: number;
     message?: string;
-    result?: UserResult;
-}
-
-export interface UserResult {
     tokenInfo?: TokenInfo;
     user?: UserData;
 }

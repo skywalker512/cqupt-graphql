@@ -10,7 +10,7 @@ type StringDataResponse {
 }
 
 type UserData {
-    id: Int
+    id: String
     mobile: String
     createdAt: String
     updatedAt: String
@@ -24,10 +24,6 @@ type TokenInfo {
 type UserRes {
     code: Int
     message: String
-    result: UserResult
-}
-
-type UserResult {
     tokenInfo: TokenInfo
     user: UserData
 }

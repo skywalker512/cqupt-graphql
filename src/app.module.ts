@@ -1,11 +1,9 @@
 import { Module, Global } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GraphQLConfigService } from './graphql-config.service';
-import { CardModule } from './card/card.module';
 import { DepartmentModule } from './department/department.module';
 
 @Global()
@@ -13,11 +11,9 @@ import { DepartmentModule } from './department/department.module';
   imports: [
     GraphQLModule.forRootAsync({
       useClass: GraphQLConfigService
-    }), 
-    TypeOrmModule.forRoot(),
-    UsersModule, 
-    AuthModule, 
-    CardModule, 
+    }),
+    UsersModule,
+    AuthModule,
     DepartmentModule,
   ],
   providers: [

@@ -10,6 +10,11 @@ export namespace cqupt_user {
          * Returns the UserController service client.
          */
         getUserController(): cqupt_user.UserController;
+
+        /**
+         * Returns the DepartmentController service client.
+         */
+        getDepartmentController(): cqupt_user.DepartmentController;
     }
 
     /** Builder for an RPC service server. */
@@ -20,6 +25,12 @@ export namespace cqupt_user {
          * @param impl UserController service implementation
          */
         addUserController(impl: cqupt_user.UserController): cqupt_user.ServerBuilder;
+
+        /**
+         * Adds a DepartmentController service implementation.
+         * @param impl DepartmentController service implementation
+         */
+        addDepartmentController(impl: cqupt_user.DepartmentController): cqupt_user.ServerBuilder;
     }
 
     /** Constructs a new UserController service. */
@@ -75,7 +86,7 @@ export namespace cqupt_user {
     export interface UserData {
 
         /** UserData id */
-        id?: (number|null);
+        id?: (string|null);
 
         /** UserData mobile */
         mobile?: (string|null);
@@ -148,5 +159,74 @@ export namespace cqupt_user {
 
         /** FindDataByPageReq pageSize */
         pageSize?: (number|null);
+    }
+
+    /** Constructs a new DepartmentController service. */
+    export interface DepartmentController {
+
+        /**
+         * Calls CreatDepartment.
+         * @param request DepartmentReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        creatDepartment(request: cqupt_user.DepartmentReq, metadata?: grpc.Metadata): Observable<cqupt_user.DepartmentRes>;
+
+        /**
+         * Calls FindAllDepartments.
+         * @param request FindDataByPageReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        findAllDepartments(request: cqupt_user.FindDataByPageReq, metadata?: grpc.Metadata): Observable<cqupt_user.DepartmentsRes>;
+    }
+
+    /** Properties of a Department. */
+    export interface Department {
+
+        /** Department id */
+        id?: (string|null);
+
+        /** Department name */
+        name?: (string|null);
+
+        /** Department createdAt */
+        createdAt?: (string|null);
+
+        /** Department updatedAt */
+        updatedAt?: (string|null);
+    }
+
+    /** Properties of a DepartmentReq. */
+    export interface DepartmentReq {
+
+        /** DepartmentReq name */
+        name?: (string|null);
+    }
+
+    /** Properties of a DepartmentRes. */
+    export interface DepartmentRes {
+
+        /** DepartmentRes code */
+        code?: (number|null);
+
+        /** DepartmentRes message */
+        message?: (string|null);
+
+        /** DepartmentRes department */
+        department?: (cqupt_user.Department|null);
+    }
+
+    /** Properties of a DepartmentsRes. */
+    export interface DepartmentsRes {
+
+        /** DepartmentsRes code */
+        code?: (number|null);
+
+        /** DepartmentsRes message */
+        message?: (string|null);
+
+        /** DepartmentsRes departments */
+        departments?: (cqupt_user.Department[]|null);
     }
 }

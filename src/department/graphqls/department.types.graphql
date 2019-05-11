@@ -19,5 +19,5 @@ type Department {
 type findAllDepartmentsRes {
     code: Int
     message: String
-    result: [Department]
+    departments: [Department]
 }

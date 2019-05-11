@@ -1,21 +1,25 @@
 import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
-import { Inject } from '@nestjs/common';
-import { DepartmentService } from './department.service';
+import { Inject, OnModuleInit } from '@nestjs/common';
+import { cqupt_user } from '../grpc/generated';
+import { GrpcClientFactory } from '../grpc/grpc.client-factory';
 
 @Resolver('Department')
-export class DepartmentResolver {
+export class DepartmentResolver implements OnModuleInit {
   constructor (
-    @Inject(DepartmentService) private readonly departmentService: DepartmentService
+    @Inject(GrpcClientFactory) private readonly grpcClientFactory: GrpcClientFactory
   ) {}
+  onModuleInit() {
+    this.departmentService = this.grpcClientFactory.userModuleClient.getService('DepartmentController');
+  }
+  private departmentService: cqupt_user.DepartmentController
   @Mutation()
   async creatDepartment(@Args() agrs: { name: string }) {
-    await this.departmentService.creatDepartment(agrs.name)
-    return { code: 200, message: '学院创建成功' }
+    const { name } = agrs
+    return await this.departmentService.creatDepartment({ name })
   }
 
   @Query()
   async findAllDepartments() {
-    const result = await this.departmentService.findAllDepartments()
-    return { code: 200, message: '查询所有学院成功', result }
+    return  await this.departmentService.findAllDepartments({})
   }
 }
