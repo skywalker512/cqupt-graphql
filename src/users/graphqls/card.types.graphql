@@ -1,0 +1,18 @@
+type Mutation {
+  creatCard(stuNum: String!, stuId: String, name: String!, userId: String, departmentId: String): DataRes
+}
+
+type Card {
+  stuNum: String
+  user: String
+  name: String
+  stuId: String
+  createdAt: String
+  updatedAt: String
+}
+
+type creatCardRes {
+  code: Int
+  message: String
+  card: Card
+}

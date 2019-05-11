@@ -5,6 +5,21 @@
  */
 
 /* tslint:disable */
+export interface Card {
+    stuNum?: string;
+    user?: string;
+    name?: string;
+    stuId?: string;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
+export interface CreatCardRes {
+    code?: number;
+    message?: string;
+    card?: Card;
+}
+
 export interface DataRes {
     code?: number;
     message?: string;
@@ -22,13 +37,14 @@ export interface FindAllDepartmentsRes {
 }
 
 export interface IMutation {
+    creatCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): DataRes | Promise<DataRes>;
     creatDepartment(name: string): DataRes | Promise<DataRes>;
 }
 
 export interface IQuery {
-    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     login(mobile: string, code: string): UserRes | Promise<UserRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
+    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     temp__(): boolean | Promise<boolean>;
 }
 

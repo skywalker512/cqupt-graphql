@@ -15,6 +15,11 @@ export namespace cqupt_user {
          * Returns the DepartmentController service client.
          */
         getDepartmentController(): cqupt_user.DepartmentController;
+
+        /**
+         * Returns the CardController service client.
+         */
+        getCardController(): cqupt_user.CardController;
     }
 
     /** Builder for an RPC service server. */
@@ -31,6 +36,12 @@ export namespace cqupt_user {
          * @param impl DepartmentController service implementation
          */
         addDepartmentController(impl: cqupt_user.DepartmentController): cqupt_user.ServerBuilder;
+
+        /**
+         * Adds a CardController service implementation.
+         * @param impl CardController service implementation
+         */
+        addCardController(impl: cqupt_user.CardController): cqupt_user.ServerBuilder;
     }
 
     /** Constructs a new UserController service. */
@@ -228,5 +239,89 @@ export namespace cqupt_user {
 
         /** DepartmentsRes departments */
         departments?: (cqupt_user.Department[]|null);
+    }
+
+    /** Constructs a new CardController service. */
+    export interface CardController {
+
+        /**
+         * Calls CreatCard.
+         * @param request CreatCardReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        creatCard(request: cqupt_user.CreatCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CardRes>;
+
+        /**
+         * Calls FindOneCard.
+         * @param request FindOneCardReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        findOneCard(request: cqupt_user.FindOneCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CardRes>;
+    }
+
+    /** Properties of a Card. */
+    export interface Card {
+
+        /** Card stuNum */
+        stuNum?: (string|null);
+
+        /** Card user */
+        user?: (string|null);
+
+        /** Card name */
+        name?: (string|null);
+
+        /** Card stuId */
+        stuId?: (number|null);
+
+        /** Card createdAt */
+        createdAt?: (string|null);
+
+        /** Card updatedAt */
+        updatedAt?: (string|null);
+    }
+
+    /** Properties of a CreatCardReq. */
+    export interface CreatCardReq {
+
+        /** CreatCardReq stuNum */
+        stuNum?: (string|null);
+
+        /** CreatCardReq stuId */
+        stuId?: (number|null);
+
+        /** CreatCardReq name */
+        name?: (string|null);
+
+        /** CreatCardReq userId */
+        userId?: (string|null);
+
+        /** CreatCardReq departmentId */
+        departmentId?: (string|null);
+    }
+
+    /** Properties of a FindOneCardReq. */
+    export interface FindOneCardReq {
+
+        /** FindOneCardReq type */
+        type?: (string|null);
+
+        /** FindOneCardReq data */
+        data?: (cqupt_user.Card|null);
+    }
+
+    /** Properties of a CardRes. */
+    export interface CardRes {
+
+        /** CardRes code */
+        code?: (number|null);
+
+        /** CardRes message */
+        message?: (string|null);
+
+        /** CardRes card */
+        card?: (cqupt_user.Card|null);
     }
 }

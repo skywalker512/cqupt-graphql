@@ -1,7 +1,7 @@
 import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
 import { Inject, OnModuleInit } from '@nestjs/common';
-import { cqupt_user } from '../grpc/generated';
-import { GrpcClientFactory } from '../grpc/grpc.client-factory';
+import { cqupt_user } from '../../grpc/generated';
+import { GrpcClientFactory } from '../../grpc/grpc.client-factory';
 
 @Resolver('Department')
 export class DepartmentResolver implements OnModuleInit {
