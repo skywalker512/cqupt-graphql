@@ -4,8 +4,6 @@ import { AuthModule } from './auth/auth.module';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GraphQLConfigService } from './graphql-config.service';
-import { DepartmentModule } from './department/department.module';
-
 @Global()
 @Module({
   imports: [
@@ -14,7 +12,6 @@ import { DepartmentModule } from './department/department.module';
     }),
     UsersModule,
     AuthModule,
-    DepartmentModule,
   ],
   providers: [
     GrpcClientFactory,
