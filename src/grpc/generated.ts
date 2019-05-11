@@ -162,27 +162,27 @@ export namespace cqupt_user {
 
         /**
          * Calls CreatUser.
-         * @param request UserReq message or plain object
+         * @param request OneUserReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        creatUser(request: cqupt_user.UserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserWithTokenRes>;
+        creatUser(request: cqupt_user.OneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserWithTokenRes>;
 
         /**
          * Calls Login.
-         * @param request UserReq message or plain object
+         * @param request OneUserReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        login(request: cqupt_user.UserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserWithTokenRes>;
+        login(request: cqupt_user.OneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserWithTokenRes>;
 
         /**
          * Calls FindOneUser.
-         * @param request UserReq message or plain object
+         * @param request OneUserReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findOneUser(request: cqupt_user.UserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserRes>;
+        findOneUser(request: cqupt_user.OneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserRes>;
 
         /**
          * Calls FindAllUsers.
@@ -220,15 +220,15 @@ export namespace cqupt_user {
 
         /** UserData updatedAt */
         updatedAt?: (string|null);
+
+        /** UserData card */
+        card?: (cqupt_user.Card|null);
     }
 
-    /** Properties of a UserReq. */
-    export interface UserReq {
+    /** Properties of an OneUserReq. */
+    export interface OneUserReq {
 
-        /** UserReq type */
-        type?: (string|null);
-
-        /** UserReq data */
+        /** OneUserReq data */
         data?: (cqupt_user.UserData|null);
     }
 
@@ -367,11 +367,11 @@ export namespace cqupt_user {
 
         /**
          * Calls FindOneCard.
-         * @param request FindOneCardReq message or plain object
+         * @param request OneCardReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findOneCard(request: cqupt_user.FindOneCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CardRes>;
+        findOneCard(request: cqupt_user.OneCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CardRes>;
     }
 
     /** Properties of a Card. */
@@ -381,7 +381,7 @@ export namespace cqupt_user {
         stuNum?: (string|null);
 
         /** Card user */
-        user?: (string|null);
+        user?: (cqupt_user.UserData|null);
 
         /** Card name */
         name?: (string|null);
@@ -394,6 +394,9 @@ export namespace cqupt_user {
 
         /** Card updatedAt */
         updatedAt?: (string|null);
+
+        /** Card department */
+        department?: (cqupt_user.Department|null);
     }
 
     /** Properties of a CreatCardReq. */
@@ -415,13 +418,10 @@ export namespace cqupt_user {
         departmentId?: (string|null);
     }
 
-    /** Properties of a FindOneCardReq. */
-    export interface FindOneCardReq {
+    /** Properties of an OneCardReq. */
+    export interface OneCardReq {
 
-        /** FindOneCardReq type */
-        type?: (string|null);
-
-        /** FindOneCardReq data */
+        /** OneCardReq data */
         data?: (cqupt_user.Card|null);
     }
 
