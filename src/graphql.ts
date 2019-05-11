@@ -5,7 +5,28 @@
  */
 
 /* tslint:disable */
+export interface DataRes {
+    code?: number;
+    message?: string;
+}
+
+export interface Department {
+    id?: string;
+    name?: string;
+}
+
+export interface FindAllDepartmentsRes {
+    code?: number;
+    message?: string;
+    result?: Department[];
+}
+
+export interface IMutation {
+    creatDepartment(name: string): DataRes | Promise<DataRes>;
+}
+
 export interface IQuery {
+    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     login(mobile: string, code: string): UserRes | Promise<UserRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
     temp__(): boolean | Promise<boolean>;
