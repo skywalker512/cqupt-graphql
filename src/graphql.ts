@@ -12,6 +12,9 @@ export interface Card {
     stuId?: string;
     createdAt?: string;
     updatedAt?: string;
+    status?: string;
+    LostTime?: string;
+    foundTime?: string;
 }
 
 export interface CreatCardRes {
@@ -36,15 +39,23 @@ export interface FindAllDepartmentsRes {
     departments?: Department[];
 }
 
+export interface LostCardRes {
+    code?: number;
+    message?: string;
+    card?: Card;
+}
+
 export interface IMutation {
-    creatCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): DataRes | Promise<DataRes>;
+    creatLostCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): LostCardRes | Promise<LostCardRes>;
     creatDepartment(name: string): DataRes | Promise<DataRes>;
+    creatCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): DataRes | Promise<DataRes>;
 }
 
 export interface IQuery {
+    findCard(stuNum: string): LostCardRes | Promise<LostCardRes>;
+    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     login(mobile: string, code: string): UserRes | Promise<UserRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
-    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     temp__(): boolean | Promise<boolean>;
 }
 

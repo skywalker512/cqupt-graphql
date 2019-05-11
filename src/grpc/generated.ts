@@ -1,5 +1,118 @@
 import * as grpc from 'grpc';
 import { Observable } from 'rxjs';
+/** Namespace cqupt_lf_be. */
+export namespace cqupt_lf_be {
+
+    /** Contains all the RPC service clients. */
+    export interface ClientFactory {
+
+        /**
+         * Returns the CardController service client.
+         */
+        getCardController(): cqupt_lf_be.CardController;
+    }
+
+    /** Builder for an RPC service server. */
+    export interface ServerBuilder {
+
+        /**
+         * Adds a CardController service implementation.
+         * @param impl CardController service implementation
+         */
+        addCardController(impl: cqupt_lf_be.CardController): cqupt_lf_be.ServerBuilder;
+    }
+
+    /** Constructs a new CardController service. */
+    export interface CardController {
+
+        /**
+         * Calls CreatLostCard.
+         * @param request CreatLostCardReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        creatLostCard(request: cqupt_lf_be.CreatLostCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CardRes>;
+
+        /**
+         * Calls FindCard.
+         * @param request FindCardReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        findCard(request: cqupt_lf_be.FindCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CardRes>;
+    }
+
+    /** Properties of a Card. */
+    export interface Card {
+
+        /** Card stuNum */
+        stuNum?: (string|null);
+
+        /** Card user */
+        user?: (string|null);
+
+        /** Card name */
+        name?: (string|null);
+
+        /** Card stuId */
+        stuId?: (number|null);
+
+        /** Card createdAt */
+        createdAt?: (string|null);
+
+        /** Card updatedAt */
+        updatedAt?: (string|null);
+
+        /** Card status */
+        status?: (string|null);
+
+        /** Card LostTime */
+        LostTime?: (string|null);
+
+        /** Card foundTime */
+        foundTime?: (string|null);
+    }
+
+    /** Properties of a CreatLostCardReq. */
+    export interface CreatLostCardReq {
+
+        /** CreatLostCardReq stuNum */
+        stuNum?: (string|null);
+
+        /** CreatLostCardReq name */
+        name?: (string|null);
+
+        /** CreatLostCardReq departmentId */
+        departmentId?: (string|null);
+
+        /** CreatLostCardReq stuId */
+        stuId?: (number|null);
+
+        /** CreatLostCardReq userId */
+        userId?: (string|null);
+    }
+
+    /** Properties of a CardRes. */
+    export interface CardRes {
+
+        /** CardRes code */
+        code?: (number|null);
+
+        /** CardRes message */
+        message?: (string|null);
+
+        /** CardRes card */
+        card?: (cqupt_lf_be.Card|null);
+    }
+
+    /** Properties of a FindCardReq. */
+    export interface FindCardReq {
+
+        /** FindCardReq stuNum */
+        stuNum?: (string|null);
+    }
+}
+
 /** Namespace cqupt_user. */
 export namespace cqupt_user {
 

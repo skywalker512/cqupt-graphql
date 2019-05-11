@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GraphQLConfigService } from './graphql-config.service';
+import { CquptlfModule } from './cquptlf/cquptlf.module';
 @Global()
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { GraphQLConfigService } from './graphql-config.service';
     }),
     UsersModule,
     AuthModule,
+    CquptlfModule,
   ],
   providers: [
     GrpcClientFactory,

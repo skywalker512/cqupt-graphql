@@ -1,0 +1,25 @@
+type Mutation {
+  creatLostCard(stuNum: String!, stuId: String, name: String!, userId: String, departmentId: String): LostCardRes
+}
+
+type Query {
+  findCard(stuNum: String!): LostCardRes
+}
+
+type Card {
+  stuNum: String
+  user: String
+  name: String
+  stuId: String
+  createdAt: String
+  updatedAt: String
+  status: String
+  LostTime: String
+  foundTime: String
+}
+
+type LostCardRes {
+  code: Int
+  message: String
+  card: Card
+}

@@ -6,6 +6,9 @@ import { join } from 'path';
 export class GrpcClientFactory {
     @Client(generateGrpcOptions('localhost:50053', 'cqupt_user', 'user.proto'))
     public readonly userModuleClient: ClientGrpc;
+
+    @Client(generateGrpcOptions('localhost:50054', 'cqupt_lf_be', 'lf.proto'))
+    public readonly cquptModuleClient: ClientGrpc;
 }
 
 export function generateGrpcOptions(url: string, packageName: string, protoFileName: string): GrpcOptions {
