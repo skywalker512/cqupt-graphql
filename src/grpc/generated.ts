@@ -31,7 +31,7 @@ export namespace cqupt_lf_be {
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        creatLostCard(request: cqupt_lf_be.CreatLostCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CardRes>;
+        creatLostCard(request: cqupt_lf_be.CreatLostCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CreatLostCardRes>;
 
         /**
          * Calls FindCard.
@@ -39,7 +39,7 @@ export namespace cqupt_lf_be {
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findCard(request: cqupt_lf_be.FindCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CardRes>;
+        findCard(request: cqupt_lf_be.FindCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.FindCardRes>;
     }
 
     /** Properties of a Card. */
@@ -92,16 +92,16 @@ export namespace cqupt_lf_be {
         userId?: (string|null);
     }
 
-    /** Properties of a CardRes. */
-    export interface CardRes {
+    /** Properties of a CreatLostCardRes. */
+    export interface CreatLostCardRes {
 
-        /** CardRes code */
+        /** CreatLostCardRes code */
         code?: (number|null);
 
-        /** CardRes message */
+        /** CreatLostCardRes message */
         message?: (string|null);
 
-        /** CardRes card */
+        /** CreatLostCardRes card */
         card?: (cqupt_lf_be.Card|null);
     }
 
@@ -110,6 +110,19 @@ export namespace cqupt_lf_be {
 
         /** FindCardReq stuNum */
         stuNum?: (string|null);
+    }
+
+    /** Properties of a FindCardRes. */
+    export interface FindCardRes {
+
+        /** FindCardRes code */
+        code?: (number|null);
+
+        /** FindCardRes message */
+        message?: (string|null);
+
+        /** FindCardRes card */
+        card?: (cqupt_lf_be.Card|null);
     }
 }
 
@@ -162,35 +175,35 @@ export namespace cqupt_user {
 
         /**
          * Calls CreatUser.
-         * @param request OneUserReq message or plain object
+         * @param request CreatUserReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        creatUser(request: cqupt_user.OneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserWithTokenRes>;
+        creatUser(request: cqupt_user.CreatUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.CreatUserRes>;
 
         /**
          * Calls Login.
-         * @param request OneUserReq message or plain object
+         * @param request LoginReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        login(request: cqupt_user.OneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserWithTokenRes>;
+        login(request: cqupt_user.LoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.LoginRes>;
 
         /**
          * Calls FindOneUser.
-         * @param request OneUserReq message or plain object
+         * @param request FindOneUserReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findOneUser(request: cqupt_user.OneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.UserRes>;
+        findOneUser(request: cqupt_user.FindOneUserReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindOneUserRes>;
 
         /**
          * Calls FindAllUsers.
-         * @param request FindDataByPageReq message or plain object
+         * @param request FindAllUsersReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findAllUsers(request: cqupt_user.FindDataByPageReq, metadata?: grpc.Metadata): Observable<cqupt_user.UsersRes>;
+        findAllUsers(request: cqupt_user.FindAllUsersReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindAllUsersRes>;
     }
 
     /** Properties of a StringDataResponse. */
@@ -225,64 +238,106 @@ export namespace cqupt_user {
         card?: (cqupt_user.Card|null);
     }
 
-    /** Properties of an OneUserReq. */
-    export interface OneUserReq {
+    /** Properties of a TokenInfo. */
+    export interface TokenInfo {
 
-        /** OneUserReq data */
+        /** TokenInfo expiresIn */
+        expiresIn?: (number|null);
+
+        /** TokenInfo accessToken */
+        accessToken?: (string|null);
+    }
+
+    /** Properties of a CreatUserReq. */
+    export interface CreatUserReq {
+
+        /** CreatUserReq data */
         data?: (cqupt_user.UserData|null);
     }
 
-    /** Properties of a UserRes. */
-    export interface UserRes {
+    /** Properties of a CreatUserRes. */
+    export interface CreatUserRes {
 
-        /** UserRes user */
-        user?: (cqupt_user.UserData|null);
-    }
-
-    /** Properties of a UsersRes. */
-    export interface UsersRes {
-
-        /** UsersRes users */
-        users?: (cqupt_user.UserData[]|null);
-    }
-
-    /** Properties of a UserWithTokenRes. */
-    export interface UserWithTokenRes {
-
-        /** UserWithTokenRes code */
+        /** CreatUserRes code */
         code?: (number|null);
 
-        /** UserWithTokenRes message */
+        /** CreatUserRes message */
         message?: (string|null);
 
-        /** UserWithTokenRes user */
+        /** CreatUserRes user */
         user?: (cqupt_user.UserData|null);
 
-        /** UserWithTokenRes tokenInfo */
-        tokenInfo?: (cqupt_user.UserWithTokenRes.TokenInfo|null);
+        /** CreatUserRes tokenInfo */
+        tokenInfo?: (cqupt_user.TokenInfo|null);
     }
 
-    export namespace UserWithTokenRes {
+    /** Properties of a LoginReq. */
+    export interface LoginReq {
 
-        /** Properties of a TokenInfo. */
-        export interface TokenInfo {
+        /** LoginReq data */
+        data?: (cqupt_user.UserData|null);
 
-            /** TokenInfo expiresIn */
-            expiresIn?: (number|null);
-
-            /** TokenInfo accessToken */
-            accessToken?: (string|null);
-        }
+        /** LoginReq code */
+        code?: (string|null);
     }
 
-    /** Properties of a FindDataByPageReq. */
-    export interface FindDataByPageReq {
+    /** Properties of a LoginRes. */
+    export interface LoginRes {
 
-        /** FindDataByPageReq pageNumber */
+        /** LoginRes code */
+        code?: (number|null);
+
+        /** LoginRes message */
+        message?: (string|null);
+
+        /** LoginRes user */
+        user?: (cqupt_user.UserData|null);
+
+        /** LoginRes tokenInfo */
+        tokenInfo?: (cqupt_user.TokenInfo|null);
+    }
+
+    /** Properties of a FindOneUserReq. */
+    export interface FindOneUserReq {
+
+        /** FindOneUserReq data */
+        data?: (cqupt_user.UserData|null);
+    }
+
+    /** Properties of a FindOneUserRes. */
+    export interface FindOneUserRes {
+
+        /** FindOneUserRes code */
+        code?: (number|null);
+
+        /** FindOneUserRes message */
+        message?: (string|null);
+
+        /** FindOneUserRes user */
+        user?: (cqupt_user.UserData|null);
+    }
+
+    /** Properties of a FindAllUsersReq. */
+    export interface FindAllUsersReq {
+
+        /** FindAllUsersReq pageNumber */
         pageNumber?: (number|null);
 
-        /** FindDataByPageReq pageSize */
+        /** FindAllUsersReq pageSize */
         pageSize?: (number|null);
+    }
+
+    /** Properties of a FindAllUsersRes. */
+    export interface FindAllUsersRes {
+
+        /** FindAllUsersRes code */
+        code?: (number|null);
+
+        /** FindAllUsersRes message */
+        message?: (string|null);
+
+        /** FindAllUsersRes user */
+        user?: (cqupt_user.UserData[]|null);
     }
 
     /** Constructs a new DepartmentController service. */
@@ -290,19 +345,19 @@ export namespace cqupt_user {
 
         /**
          * Calls CreatDepartment.
-         * @param request DepartmentReq message or plain object
+         * @param request CreatDepartmentReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        creatDepartment(request: cqupt_user.DepartmentReq, metadata?: grpc.Metadata): Observable<cqupt_user.DepartmentRes>;
+        creatDepartment(request: cqupt_user.CreatDepartmentReq, metadata?: grpc.Metadata): Observable<cqupt_user.CreatDepartmentRes>;
 
         /**
          * Calls FindAllDepartments.
-         * @param request FindDataByPageReq message or plain object
+         * @param request FindAllDepartmentsReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findAllDepartments(request: cqupt_user.FindDataByPageReq, metadata?: grpc.Metadata): Observable<cqupt_user.DepartmentsRes>;
+        findAllDepartments(request: cqupt_user.FindAllDepartmentsReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindAllDepartmentsRes>;
     }
 
     /** Properties of a Department. */
@@ -321,36 +376,46 @@ export namespace cqupt_user {
         updatedAt?: (string|null);
     }
 
-    /** Properties of a DepartmentReq. */
-    export interface DepartmentReq {
+    /** Properties of a CreatDepartmentReq. */
+    export interface CreatDepartmentReq {
 
-        /** DepartmentReq name */
+        /** CreatDepartmentReq name */
         name?: (string|null);
     }
 
-    /** Properties of a DepartmentRes. */
-    export interface DepartmentRes {
+    /** Properties of a CreatDepartmentRes. */
+    export interface CreatDepartmentRes {
 
-        /** DepartmentRes code */
+        /** CreatDepartmentRes code */
         code?: (number|null);
 
-        /** DepartmentRes message */
+        /** CreatDepartmentRes message */
         message?: (string|null);
 
-        /** DepartmentRes department */
+        /** CreatDepartmentRes department */
         department?: (cqupt_user.Department|null);
     }
 
-    /** Properties of a DepartmentsRes. */
-    export interface DepartmentsRes {
+    /** Properties of a FindAllDepartmentsReq. */
+    export interface FindAllDepartmentsReq {
 
-        /** DepartmentsRes code */
+        /** FindAllDepartmentsReq pageNumber */
+        pageNumber?: (number|null);
+
+        /** FindAllDepartmentsReq pageSize */
+        pageSize?: (number|null);
+    }
+
+    /** Properties of a FindAllDepartmentsRes. */
+    export interface FindAllDepartmentsRes {
+
+        /** FindAllDepartmentsRes code */
         code?: (number|null);
 
-        /** DepartmentsRes message */
+        /** FindAllDepartmentsRes message */
         message?: (string|null);
 
-        /** DepartmentsRes departments */
+        /** FindAllDepartmentsRes departments */
         departments?: (cqupt_user.Department[]|null);
     }
 
@@ -363,15 +428,15 @@ export namespace cqupt_user {
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        creatCard(request: cqupt_user.CreatCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CardRes>;
+        creatCard(request: cqupt_user.CreatCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CreatCardRes>;
 
         /**
          * Calls FindOneCard.
-         * @param request OneCardReq message or plain object
+         * @param request FindOneCardReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findOneCard(request: cqupt_user.OneCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.CardRes>;
+        findOneCard(request: cqupt_user.FindOneCardReq, metadata?: grpc.Metadata): Observable<cqupt_user.FindOneCardRes>;
     }
 
     /** Properties of a Card. */
@@ -418,23 +483,36 @@ export namespace cqupt_user {
         departmentId?: (string|null);
     }
 
-    /** Properties of an OneCardReq. */
-    export interface OneCardReq {
+    /** Properties of a CreatCardRes. */
+    export interface CreatCardRes {
 
-        /** OneCardReq data */
+        /** CreatCardRes code */
+        code?: (number|null);
+
+        /** CreatCardRes message */
+        message?: (string|null);
+
+        /** CreatCardRes card */
+        card?: (cqupt_user.Card|null);
+    }
+
+    /** Properties of a FindOneCardReq. */
+    export interface FindOneCardReq {
+
+        /** FindOneCardReq data */
         data?: (cqupt_user.Card|null);
     }
 
-    /** Properties of a CardRes. */
-    export interface CardRes {
+    /** Properties of a FindOneCardRes. */
+    export interface FindOneCardRes {
 
-        /** CardRes code */
+        /** FindOneCardRes code */
         code?: (number|null);
 
-        /** CardRes message */
+        /** FindOneCardRes message */
         message?: (string|null);
 
-        /** CardRes card */
+        /** FindOneCardRes card */
         card?: (cqupt_user.Card|null);
     }
 }
