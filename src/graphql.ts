@@ -53,10 +53,10 @@ export interface IMutation {
 }
 
 export interface IQuery {
-    findCard(stuNum: string): LostCardRes | Promise<LostCardRes>;
+    findCardStatus(stuNum: string): LostCardRes | Promise<LostCardRes>;
+    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     login(mobile: string, code: string): UserRes | Promise<UserRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
-    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
     temp__(): boolean | Promise<boolean>;
 }
 

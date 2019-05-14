@@ -16,9 +16,9 @@ export class UsersResolver implements OnModuleInit {
   private userService: cqupt_user.UserController
 
   @Query('login')
-  async login(@Args() args: cqupt_user.OneUserReq): Promise<cqupt_user.UserWithTokenRes> {
-    console.log(args)
-    return await this.userService.login(args).toPromise()
+  async login(@Args() args: { mobile: string, code: string }): Promise<cqupt_user.LoginRes> {
+    const { mobile } = args
+    return await this.userService.login({ data: { mobile } }).toPromise()
   }
 
   @Query('sendCode')

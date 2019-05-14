@@ -34,42 +34,42 @@ export namespace cqupt_lf_be {
         creatLostCard(request: cqupt_lf_be.CreatLostCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CreatLostCardRes>;
 
         /**
-         * Calls FindCard.
-         * @param request FindCardReq message or plain object
+         * Calls FindCardStatus.
+         * @param request FindCardStatusReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        findCard(request: cqupt_lf_be.FindCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.FindCardRes>;
+        findCardStatus(request: cqupt_lf_be.FindCardStatusReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.FindCardStatusRes>;
     }
 
-    /** Properties of a Card. */
-    export interface Card {
+    /** Properties of a CardWithStatus. */
+    export interface CardWithStatus {
 
-        /** Card stuNum */
+        /** CardWithStatus stuNum */
         stuNum?: (string|null);
 
-        /** Card user */
+        /** CardWithStatus user */
         user?: (string|null);
 
-        /** Card name */
+        /** CardWithStatus name */
         name?: (string|null);
 
-        /** Card stuId */
+        /** CardWithStatus stuId */
         stuId?: (number|null);
 
-        /** Card createdAt */
+        /** CardWithStatus createdAt */
         createdAt?: (string|null);
 
-        /** Card updatedAt */
+        /** CardWithStatus updatedAt */
         updatedAt?: (string|null);
 
-        /** Card status */
+        /** CardWithStatus status */
         status?: (string|null);
 
-        /** Card LostTime */
+        /** CardWithStatus LostTime */
         LostTime?: (string|null);
 
-        /** Card foundTime */
+        /** CardWithStatus foundTime */
         foundTime?: (string|null);
     }
 
@@ -102,27 +102,27 @@ export namespace cqupt_lf_be {
         message?: (string|null);
 
         /** CreatLostCardRes card */
-        card?: (cqupt_lf_be.Card|null);
+        card?: (cqupt_lf_be.CardWithStatus|null);
     }
 
-    /** Properties of a FindCardReq. */
-    export interface FindCardReq {
+    /** Properties of a FindCardStatusReq. */
+    export interface FindCardStatusReq {
 
-        /** FindCardReq stuNum */
+        /** FindCardStatusReq stuNum */
         stuNum?: (string|null);
     }
 
-    /** Properties of a FindCardRes. */
-    export interface FindCardRes {
+    /** Properties of a FindCardStatusRes. */
+    export interface FindCardStatusRes {
 
-        /** FindCardRes code */
+        /** FindCardStatusRes code */
         code?: (number|null);
 
-        /** FindCardRes message */
+        /** FindCardStatusRes message */
         message?: (string|null);
 
-        /** FindCardRes card */
-        card?: (cqupt_lf_be.Card|null);
+        /** FindCardStatusRes card */
+        card?: (cqupt_lf_be.CardWithStatus|null);
     }
 }
 

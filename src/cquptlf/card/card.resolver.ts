@@ -19,7 +19,7 @@ export class CardResolver implements OnModuleInit {
     return await this.cardService.creatLostCard(agrs)
   }
   @Query()
-  async findCard(@Args() agrs: cqupt_lf_be.FindCardReq ) {
-    return await this.cardService.findCard(agrs)
+  async findCardStatus(@Args() agrs: cqupt_lf_be.FindCardStatusReq ) {
+    return await this.cardService.findCardStatus(agrs)
   }
 }

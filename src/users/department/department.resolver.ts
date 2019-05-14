@@ -14,7 +14,7 @@ export class DepartmentResolver implements OnModuleInit {
   private departmentService: cqupt_user.DepartmentController
 
   @Mutation()
-  async creatDepartment(@Args() agrs: cqupt_user.DepartmentReq) {
+  async creatDepartment(@Args() agrs: cqupt_user.CreatDepartmentReq) {
     return await this.departmentService.creatDepartment(agrs)
   }
 
