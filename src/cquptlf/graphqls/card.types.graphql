@@ -1,14 +1,14 @@
 type Mutation {
-  creatLostCard(stuNum: String!, stuId: String, name: String!, userId: String, departmentId: String): LostCardRes
+  creatLostCard(stuNum: String!, name: String!, stuId: String, userId: String, departmentId: String): LostCardRes
 }
 
 type Query {
   findCardStatus(stuNum: String!): LostCardRes
 }
 
-type Card {
+type CardWithStatus {
   stuNum: String
-  user: String
+  user: UserData
   name: String
   stuId: String
   createdAt: String
@@ -21,5 +21,5 @@ type Card {
 type LostCardRes {
   code: Int
   message: String
-  card: Card
+  card: CardWithStatus
 }

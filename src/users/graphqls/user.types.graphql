@@ -1,5 +1,5 @@
 type Query {
-    login(mobile: String!, code: String!): UserRes
+    login(mobile: String! code: String!): LoginRes
     sendCode(mobile: String!): SendCodeRes
 }
 
@@ -22,11 +22,11 @@ type TokenInfo {
     accessToken: String
 }
 
-type UserRes {
+type LoginRes {
     code: Int
     message: String
-    tokenInfo: TokenInfo
     user: UserData
+    tokenInfo: TokenInfo
 }
 
 type SendCodeRes {

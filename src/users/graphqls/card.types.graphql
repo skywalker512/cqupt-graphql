@@ -1,10 +1,22 @@
+
+
 type Mutation {
-  creatCard(stuNum: String!, stuId: String, name: String!, userId: String, departmentId: String): DataRes
+  creatCard(  
+    stuNum: String!
+    name: String!
+    stuId: String
+    userId: String
+    departmentId: String
+  ): CreatCardRes
+}
+
+type Query {
+  findOneCard(stuNum: String, mobile: String): FindOneCardRes
 }
 
 type Card {
   stuNum: String
-  user: String
+  user: UserData
   name: String
   stuId: String
   department: Department
@@ -12,7 +24,13 @@ type Card {
   updatedAt: String
 }
 
-type creatCardRes {
+type CreatCardRes {
+  code: Int
+  message: String
+  card: Card
+}
+
+type FindOneCardRes {
   code: Int
   message: String
   card: Card

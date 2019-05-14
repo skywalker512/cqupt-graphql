@@ -7,7 +7,17 @@
 /* tslint:disable */
 export interface Card {
     stuNum?: string;
-    user?: string;
+    user?: UserData;
+    name?: string;
+    stuId?: string;
+    department?: Department;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
+export interface CardWithStatus {
+    stuNum?: string;
+    user?: UserData;
     name?: string;
     stuId?: string;
     createdAt?: string;
@@ -15,7 +25,6 @@ export interface Card {
     status?: string;
     LostTime?: string;
     foundTime?: string;
-    department?: Department;
 }
 
 export interface CreatCardRes {
@@ -24,14 +33,17 @@ export interface CreatCardRes {
     card?: Card;
 }
 
-export interface DataRes {
+export interface CreatDepartmentRes {
     code?: number;
     message?: string;
+    department?: Department;
 }
 
 export interface Department {
     id?: string;
     name?: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface FindAllDepartmentsRes {
@@ -40,22 +52,36 @@ export interface FindAllDepartmentsRes {
     departments?: Department[];
 }
 
-export interface LostCardRes {
+export interface FindOneCardRes {
     code?: number;
     message?: string;
     card?: Card;
 }
 
+export interface LoginRes {
+    code?: number;
+    message?: string;
+    user?: UserData;
+    tokenInfo?: TokenInfo;
+}
+
+export interface LostCardRes {
+    code?: number;
+    message?: string;
+    card?: CardWithStatus;
+}
+
 export interface IMutation {
     creatLostCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): LostCardRes | Promise<LostCardRes>;
-    creatCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): DataRes | Promise<DataRes>;
-    creatDepartment(name: string): DataRes | Promise<DataRes>;
+    creatCard(stuNum: string, name: string, stuId?: string, userId?: string, departmentId?: string): CreatCardRes | Promise<CreatCardRes>;
+    creatDepartment(name: string): CreatDepartmentRes | Promise<CreatDepartmentRes>;
 }
 
 export interface IQuery {
     findCardStatus(stuNum: string): LostCardRes | Promise<LostCardRes>;
-    findAllDepartments(): findAllDepartmentsRes | Promise<findAllDepartmentsRes>;
-    login(mobile: string, code: string): UserRes | Promise<UserRes>;
+    findOneCard(stuNum?: string, mobile?: string): FindOneCardRes | Promise<FindOneCardRes>;
+    findAllDepartments(): FindAllDepartmentsRes | Promise<FindAllDepartmentsRes>;
+    login(mobile: string, code: string): LoginRes | Promise<LoginRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
     temp__(): boolean | Promise<boolean>;
 }
@@ -82,11 +108,4 @@ export interface UserData {
     createdAt?: string;
     updatedAt?: string;
     card?: Card;
-}
-
-export interface UserRes {
-    code?: number;
-    message?: string;
-    tokenInfo?: TokenInfo;
-    user?: UserData;
 }

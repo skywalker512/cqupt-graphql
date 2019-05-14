@@ -15,13 +15,13 @@ export class UsersResolver implements OnModuleInit {
   ) {}
   private userService: cqupt_user.UserController
 
-  @Query('login')
+  @Query()
   async login(@Args() args: { mobile: string, code: string }): Promise<cqupt_user.LoginRes> {
     const { mobile } = args
     return await this.userService.login({ data: { mobile } }).toPromise()
   }
 
-  @Query('sendCode')
+  @Query()
   // @UseGuards(AuthGuard)
   async sendCode(@Args() args: { mobile: string }) {
     return { code: 200, message: '验证码发送成功' }
