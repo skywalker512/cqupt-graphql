@@ -86,7 +86,7 @@ export namespace cqupt_lf_be {
         departmentId?: (string|null);
 
         /** CreatLostCardReq stuId */
-        stuId?: (number|null);
+        stuId?: (string|null);
 
         /** CreatLostCardReq userId */
         userId?: (string|null);
@@ -471,7 +471,7 @@ export namespace cqupt_user {
         stuNum?: (string|null);
 
         /** CreatCardReq stuId */
-        stuId?: (number|null);
+        stuId?: (string|null);
 
         /** CreatCardReq name */
         name?: (string|null);

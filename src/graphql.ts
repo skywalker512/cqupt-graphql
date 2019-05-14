@@ -72,7 +72,7 @@ export interface LostCardRes {
 }
 
 export interface IMutation {
-    creatLostCard(stuNum: string, stuId?: string, name: string, userId?: string, departmentId?: string): LostCardRes | Promise<LostCardRes>;
+    creatLostCard(stuNum: string, name: string, stuId?: string, userId?: string, departmentId?: string): LostCardRes | Promise<LostCardRes>;
     creatCard(stuNum: string, name: string, stuId?: string, userId?: string, departmentId?: string): CreatCardRes | Promise<CreatCardRes>;
     creatDepartment(name: string): CreatDepartmentRes | Promise<CreatDepartmentRes>;
 }
