@@ -26,14 +26,6 @@ export namespace cqupt_lf_be {
     export interface CardController {
 
         /**
-         * Calls CreatLostCard.
-         * @param request CreatLostCardReq message or plain object
-         *  * @param metadata Optional metadata
-         * @returns Promise
-         */
-        creatLostCard(request: cqupt_lf_be.CreatLostCardReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CreatLostCardRes>;
-
-        /**
          * Calls FindCardStatus.
          * @param request FindCardStatusReq message or plain object
          *  * @param metadata Optional metadata
@@ -48,61 +40,14 @@ export namespace cqupt_lf_be {
         /** CardWithStatus stuNum */
         stuNum?: (string|null);
 
-        /** CardWithStatus user */
-        user?: (string|null);
-
-        /** CardWithStatus name */
-        name?: (string|null);
-
-        /** CardWithStatus stuId */
-        stuId?: (number|null);
-
-        /** CardWithStatus createdAt */
-        createdAt?: (string|null);
-
-        /** CardWithStatus updatedAt */
-        updatedAt?: (string|null);
-
         /** CardWithStatus status */
         status?: (string|null);
 
-        /** CardWithStatus LostTime */
-        LostTime?: (string|null);
+        /** CardWithStatus lostAt */
+        lostAt?: (string|null);
 
-        /** CardWithStatus foundTime */
-        foundTime?: (string|null);
-    }
-
-    /** Properties of a CreatLostCardReq. */
-    export interface CreatLostCardReq {
-
-        /** CreatLostCardReq stuNum */
-        stuNum?: (string|null);
-
-        /** CreatLostCardReq name */
-        name?: (string|null);
-
-        /** CreatLostCardReq departmentId */
-        departmentId?: (string|null);
-
-        /** CreatLostCardReq stuId */
-        stuId?: (string|null);
-
-        /** CreatLostCardReq userId */
-        userId?: (string|null);
-    }
-
-    /** Properties of a CreatLostCardRes. */
-    export interface CreatLostCardRes {
-
-        /** CreatLostCardRes code */
-        code?: (number|null);
-
-        /** CreatLostCardRes message */
-        message?: (string|null);
-
-        /** CreatLostCardRes card */
-        card?: (cqupt_lf_be.CardWithStatus|null);
+        /** CardWithStatus foundAt */
+        foundAt?: (string|null);
     }
 
     /** Properties of a FindCardStatusReq. */
@@ -110,6 +55,15 @@ export namespace cqupt_lf_be {
 
         /** FindCardStatusReq stuNum */
         stuNum?: (string|null);
+
+        /** FindCardStatusReq stuId */
+        stuId?: (string|null);
+
+        /** FindCardStatusReq name */
+        name?: (string|null);
+
+        /** FindCardStatusReq userId */
+        userId?: (string|null);
     }
 
     /** Properties of a FindCardStatusRes. */
@@ -233,9 +187,6 @@ export namespace cqupt_user {
 
         /** UserData updatedAt */
         updatedAt?: (string|null);
-
-        /** UserData card */
-        card?: (cqupt_user.Card|null);
     }
 
     /** Properties of a TokenInfo. */
@@ -266,9 +217,6 @@ export namespace cqupt_user {
 
         /** CreatUserRes user */
         user?: (cqupt_user.UserData|null);
-
-        /** CreatUserRes tokenInfo */
-        tokenInfo?: (cqupt_user.TokenInfo|null);
     }
 
     /** Properties of a LoginReq. */
@@ -478,9 +426,6 @@ export namespace cqupt_user {
 
         /** CreatCardReq userId */
         userId?: (string|null);
-
-        /** CreatCardReq departmentId */
-        departmentId?: (string|null);
     }
 
     /** Properties of a CreatCardRes. */
@@ -499,8 +444,17 @@ export namespace cqupt_user {
     /** Properties of a FindOneCardReq. */
     export interface FindOneCardReq {
 
-        /** FindOneCardReq data */
-        data?: (cqupt_user.Card|null);
+        /** FindOneCardReq stuNum */
+        stuNum?: (string|null);
+
+        /** FindOneCardReq stuId */
+        stuId?: (string|null);
+
+        /** FindOneCardReq name */
+        name?: (string|null);
+
+        /** FindOneCardReq userId */
+        userId?: (string|null);
     }
 
     /** Properties of a FindOneCardRes. */

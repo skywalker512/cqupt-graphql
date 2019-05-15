@@ -17,14 +17,9 @@ export interface Card {
 
 export interface CardWithStatus {
     stuNum?: string;
-    user?: UserData;
-    name?: string;
-    stuId?: string;
-    createdAt?: string;
-    updatedAt?: string;
     status?: string;
-    LostTime?: string;
-    foundTime?: string;
+    lostAt?: string;
+    foundAt?: string;
 }
 
 export interface CreatCardRes {
@@ -52,6 +47,12 @@ export interface FindAllDepartmentsRes {
     departments?: Department[];
 }
 
+export interface FindCardStatusRes {
+    code?: number;
+    message?: string;
+    card?: CardWithStatus;
+}
+
 export interface FindOneCardRes {
     code?: number;
     message?: string;
@@ -65,21 +66,14 @@ export interface LoginRes {
     tokenInfo?: TokenInfo;
 }
 
-export interface LostCardRes {
-    code?: number;
-    message?: string;
-    card?: CardWithStatus;
-}
-
 export interface IMutation {
-    creatLostCard(stuNum: string, name: string, stuId?: string, userId?: string, departmentId?: string): LostCardRes | Promise<LostCardRes>;
-    creatCard(stuNum: string, name: string, stuId?: string, userId?: string, departmentId?: string): CreatCardRes | Promise<CreatCardRes>;
+    creatCard(stuNum: string, name: string, departmentId: string, stuId?: string, userId?: string): CreatCardRes | Promise<CreatCardRes>;
     creatDepartment(name: string): CreatDepartmentRes | Promise<CreatDepartmentRes>;
 }
 
 export interface IQuery {
-    findCardStatus(stuNum: string): LostCardRes | Promise<LostCardRes>;
-    findOneCard(stuNum?: string, mobile?: string): FindOneCardRes | Promise<FindOneCardRes>;
+    findCardStatus(stuNum?: string, stuId?: string, name?: string, userId?: string): FindCardStatusRes | Promise<FindCardStatusRes>;
+    findOneCard(stuNum?: string, stuId?: string, name?: string, userId?: string): FindOneCardRes | Promise<FindOneCardRes>;
     findAllDepartments(): FindAllDepartmentsRes | Promise<FindAllDepartmentsRes>;
     login(mobile: string, code: string): LoginRes | Promise<LoginRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
@@ -107,5 +101,4 @@ export interface UserData {
     mobile?: string;
     createdAt?: string;
     updatedAt?: string;
-    card?: Card;
 }

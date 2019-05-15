@@ -13,11 +13,7 @@ export class CardResolver implements OnModuleInit {
     @Inject(GrpcClientFactory) private readonly grpcClientFactory: GrpcClientFactory
   ) {}
   private cardService: cqupt_lf_be.CardController
-
-  @Mutation()
-  async creatLostCard(@Args() agrs: cqupt_lf_be.CreatLostCardReq ) {
-    return await this.cardService.creatLostCard(agrs)
-  }
+  
   @Query()
   async findCardStatus(@Args() agrs: cqupt_lf_be.FindCardStatusReq ) {
     return await this.cardService.findCardStatus(agrs)

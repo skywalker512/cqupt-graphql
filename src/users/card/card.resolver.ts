@@ -20,8 +20,7 @@ export class CardResolver {
   }
 
   @Query()
-  async findOneCard(@Args() args: { stuNum?: string, mobile?: string }) {
-    const { stuNum } = args
-    return await this.cardService.findOneCard({ data: { stuNum } })
+  async findOneCard(@Args() args: cqupt_user.FindOneCardReq) {
+    return await this.cardService.findOneCard(args)
   }
 }

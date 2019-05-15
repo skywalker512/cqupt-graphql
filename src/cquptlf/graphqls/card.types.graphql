@@ -1,24 +1,20 @@
-type Mutation {
-  creatLostCard(stuNum: String!, name: String!, stuId: String, userId: String, departmentId: String): LostCardRes
-}
-
 type Query {
-  findCardStatus(stuNum: String!): LostCardRes
+  findCardStatus(
+    stuNum: String, 
+    stuId: String,
+    name: String,
+    userId: String,
+  ): FindCardStatusRes
 }
 
 type CardWithStatus {
   stuNum: String
-  user: UserData
-  name: String
-  stuId: String
-  createdAt: String
-  updatedAt: String
   status: String
-  LostTime: String
-  foundTime: String
+  lostAt: String
+  foundAt: String
 }
 
-type LostCardRes {
+type FindCardStatusRes {
   code: Int
   message: String
   card: CardWithStatus
