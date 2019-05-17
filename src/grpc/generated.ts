@@ -32,6 +32,14 @@ export namespace cqupt_lf_be {
          * @returns Promise
          */
         findCardStatus(request: cqupt_lf_be.FindCardStatusReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.FindCardStatusRes>;
+
+        /**
+         * Calls ChangeCardStatus.
+         * @param request ChangeCardStatusReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        changeCardStatus(request: cqupt_lf_be.ChangeCardStatusReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.ChangeCardStatusRes>;
     }
 
     /** Properties of a CardWithStatus. */
@@ -76,6 +84,29 @@ export namespace cqupt_lf_be {
         message?: (string|null);
 
         /** FindCardStatusRes card */
+        card?: (cqupt_lf_be.CardWithStatus|null);
+    }
+
+    /** Properties of a ChangeCardStatusReq. */
+    export interface ChangeCardStatusReq {
+
+        /** ChangeCardStatusReq stuNum */
+        stuNum?: (string|null);
+
+        /** ChangeCardStatusReq status */
+        status?: (string|null);
+    }
+
+    /** Properties of a ChangeCardStatusRes. */
+    export interface ChangeCardStatusRes {
+
+        /** ChangeCardStatusRes code */
+        code?: (number|null);
+
+        /** ChangeCardStatusRes message */
+        message?: (string|null);
+
+        /** ChangeCardStatusRes card */
         card?: (cqupt_lf_be.CardWithStatus|null);
     }
 }
@@ -426,6 +457,9 @@ export namespace cqupt_user {
 
         /** CreatCardReq userId */
         userId?: (string|null);
+
+        /** CreatCardReq departmentId */
+        departmentId?: (string|null);
     }
 
     /** Properties of a CreatCardRes. */

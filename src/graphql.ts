@@ -22,6 +22,12 @@ export interface CardWithStatus {
     foundAt?: string;
 }
 
+export interface ChangeCardStatusRes {
+    code?: number;
+    message?: string;
+    card?: CardWithStatus;
+}
+
 export interface CreatCardRes {
     code?: number;
     message?: string;
@@ -67,6 +73,7 @@ export interface LoginRes {
 }
 
 export interface IMutation {
+    changeCardStatus(stuNum?: string, status?: string): ChangeCardStatusRes | Promise<ChangeCardStatusRes>;
     creatCard(stuNum: string, name: string, departmentId: string, stuId?: string, userId?: string): CreatCardRes | Promise<CreatCardRes>;
     creatDepartment(name: string): CreatDepartmentRes | Promise<CreatDepartmentRes>;
 }
@@ -74,9 +81,9 @@ export interface IMutation {
 export interface IQuery {
     findCardStatus(stuNum?: string, stuId?: string, name?: string, userId?: string): FindCardStatusRes | Promise<FindCardStatusRes>;
     findOneCard(stuNum?: string, stuId?: string, name?: string, userId?: string): FindOneCardRes | Promise<FindOneCardRes>;
-    findAllDepartments(): FindAllDepartmentsRes | Promise<FindAllDepartmentsRes>;
     login(mobile: string, code: string): LoginRes | Promise<LoginRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
+    findAllDepartments(): FindAllDepartmentsRes | Promise<FindAllDepartmentsRes>;
     temp__(): boolean | Promise<boolean>;
 }
 

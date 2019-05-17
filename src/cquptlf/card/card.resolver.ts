@@ -18,4 +18,9 @@ export class CardResolver implements OnModuleInit {
   async findCardStatus(@Args() agrs: cqupt_lf_be.FindCardStatusReq ) {
     return await this.cardService.findCardStatus(agrs)
   }
+
+  @Mutation()
+  async changeCardStatus(@Args() agrs: cqupt_lf_be.ChangeCardStatusReq ) {
+    return await this.cardService.changeCardStatus(agrs)
+  }
 }

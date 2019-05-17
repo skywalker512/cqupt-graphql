@@ -7,6 +7,13 @@ type Query {
   ): FindCardStatusRes
 }
 
+type Mutation {
+  changeCardStatus(
+    stuNum: String,
+    status: String,
+  ): ChangeCardStatusRes
+}
+
 type CardWithStatus {
   stuNum: String
   status: String
@@ -15,6 +22,12 @@ type CardWithStatus {
 }
 
 type FindCardStatusRes {
+  code: Int
+  message: String
+  card: CardWithStatus
+}
+
+type ChangeCardStatusRes {
   code: Int
   message: String
   card: CardWithStatus
