@@ -1,0 +1,8 @@
+type Query {
+  sendVerifyCode(mobile: String!): SendVerifyCodeRes
+}
+
+type SendVerifyCodeRes {
+  code: Int
+  message: String
+}

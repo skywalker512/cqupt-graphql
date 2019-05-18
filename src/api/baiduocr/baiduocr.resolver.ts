@@ -5,16 +5,16 @@ import { cqupt_api } from '@/src/grpc/generated';
 @Resolver('Baiduocr')
 export class BaiduocrResolver implements OnModuleInit {
   onModuleInit() {
-    this.BaiduocrService = this.grpcClientFactory.apiModuleClient.getService('BaiduocrController');
+    this.baiduocrService = this.grpcClientFactory.apiModuleClient.getService('BaiduocrController');
   }
 
   constructor(
     @Inject(GrpcClientFactory) private readonly grpcClientFactory: GrpcClientFactory
   ) {}
-  private BaiduocrService: cqupt_api.BaiduocrController
+  private baiduocrService: cqupt_api.BaiduocrController
 
   @Query()
   async getAuthorization(@Args() agrs: cqupt_api.GetAuthorizationReq ) {
-    return await this.BaiduocrService.getAuthorization(agrs).toPromise()
+    return await this.baiduocrService.getAuthorization(agrs).toPromise()
   }
 }

@@ -123,6 +123,7 @@ export interface IMutation {
 
 export interface IQuery {
     getAuthorization(): GetAuthorizationRes | Promise<GetAuthorizationRes>;
+    sendVerifyCode(mobile: string): SendVerifyCodeRes | Promise<SendVerifyCodeRes>;
     findCardStatus(stuNum?: string, stuId?: string, name?: string, userId?: string): FindCardStatusRes | Promise<FindCardStatusRes>;
     findAllLocationWithTags(): FindAllLocationWithTagsRes | Promise<FindAllLocationWithTagsRes>;
     findOneCard(stuNum?: string, stuId?: string, name?: string, userId?: string): FindOneCardRes | Promise<FindOneCardRes>;
@@ -133,6 +134,11 @@ export interface IQuery {
 }
 
 export interface SendCodeRes {
+    code?: number;
+    message?: string;
+}
+
+export interface SendVerifyCodeRes {
     code?: number;
     message?: string;
 }

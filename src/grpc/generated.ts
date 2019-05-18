@@ -10,6 +10,11 @@ export namespace cqupt_api {
          * Returns the BaiduocrController service client.
          */
         getBaiduocrController(): cqupt_api.BaiduocrController;
+
+        /**
+         * Returns the QcloudsmsController service client.
+         */
+        getQcloudsmsController(): cqupt_api.QcloudsmsController;
     }
 
     /** Builder for an RPC service server. */
@@ -20,6 +25,12 @@ export namespace cqupt_api {
          * @param impl BaiduocrController service implementation
          */
         addBaiduocrController(impl: cqupt_api.BaiduocrController): cqupt_api.ServerBuilder;
+
+        /**
+         * Adds a QcloudsmsController service implementation.
+         * @param impl QcloudsmsController service implementation
+         */
+        addQcloudsmsController(impl: cqupt_api.QcloudsmsController): cqupt_api.ServerBuilder;
     }
 
     /** Constructs a new BaiduocrController service. */
@@ -55,6 +66,63 @@ export namespace cqupt_api {
 
         /** GetAuthorizationRes authorization */
         authorization?: (string|null);
+    }
+
+    /** Constructs a new QcloudsmsController service. */
+    export interface QcloudsmsController {
+
+        /**
+         * Calls SendVerifyCode.
+         * @param request SendVerifyCodeReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        sendVerifyCode(request: cqupt_api.SendVerifyCodeReq, metadata?: grpc.Metadata): Observable<cqupt_api.SendVerifyCodeRes>;
+
+        /**
+         * Calls ValidateCode.
+         * @param request ValidateCodeReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        validateCode(request: cqupt_api.ValidateCodeReq, metadata?: grpc.Metadata): Observable<cqupt_api.ValidateCodeRes>;
+    }
+
+    /** Properties of a SendVerifyCodeReq. */
+    export interface SendVerifyCodeReq {
+
+        /** SendVerifyCodeReq mobile */
+        mobile?: (string|null);
+    }
+
+    /** Properties of a SendVerifyCodeRes. */
+    export interface SendVerifyCodeRes {
+
+        /** SendVerifyCodeRes code */
+        code?: (number|null);
+
+        /** SendVerifyCodeRes message */
+        message?: (string|null);
+    }
+
+    /** Properties of a ValidateCodeReq. */
+    export interface ValidateCodeReq {
+
+        /** ValidateCodeReq mobile */
+        mobile?: (string|null);
+
+        /** ValidateCodeReq code */
+        code?: (string|null);
+    }
+
+    /** Properties of a ValidateCodeRes. */
+    export interface ValidateCodeRes {
+
+        /** ValidateCodeRes code */
+        code?: (number|null);
+
+        /** ValidateCodeRes message */
+        message?: (string|null);
     }
 }
 
