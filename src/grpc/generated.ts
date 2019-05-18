@@ -1,5 +1,63 @@
 import * as grpc from 'grpc';
 import { Observable } from 'rxjs';
+/** Namespace cqupt_api. */
+export namespace cqupt_api {
+
+    /** Contains all the RPC service clients. */
+    export interface ClientFactory {
+
+        /**
+         * Returns the BaiduocrController service client.
+         */
+        getBaiduocrController(): cqupt_api.BaiduocrController;
+    }
+
+    /** Builder for an RPC service server. */
+    export interface ServerBuilder {
+
+        /**
+         * Adds a BaiduocrController service implementation.
+         * @param impl BaiduocrController service implementation
+         */
+        addBaiduocrController(impl: cqupt_api.BaiduocrController): cqupt_api.ServerBuilder;
+    }
+
+    /** Constructs a new BaiduocrController service. */
+    export interface BaiduocrController {
+
+        /**
+         * Calls GetAuthorization.
+         * @param request GetAuthorizationReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        getAuthorization(request: cqupt_api.GetAuthorizationReq, metadata?: grpc.Metadata): Observable<cqupt_api.GetAuthorizationRes>;
+    }
+
+    /** Properties of a GetAuthorizationReq. */
+    export interface GetAuthorizationReq {
+
+        /** GetAuthorizationReq method */
+        method?: (string|null);
+
+        /** GetAuthorizationReq uri */
+        uri?: (string|null);
+    }
+
+    /** Properties of a GetAuthorizationRes. */
+    export interface GetAuthorizationRes {
+
+        /** GetAuthorizationRes code */
+        code?: (number|null);
+
+        /** GetAuthorizationRes message */
+        message?: (string|null);
+
+        /** GetAuthorizationRes authorization */
+        authorization?: (string|null);
+    }
+}
+
 /** Namespace cqupt_lf_be. */
 export namespace cqupt_lf_be {
 

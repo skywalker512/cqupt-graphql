@@ -1,0 +1,9 @@
+type Query {
+  getAuthorization: GetAuthorizationRes
+}
+
+type GetAuthorizationRes {
+  code: Int
+  message: String
+  authorization: String
+}

@@ -84,6 +84,12 @@ export interface FindOneCardRes {
     card?: Card;
 }
 
+export interface GetAuthorizationRes {
+    code?: number;
+    message?: string;
+    authorization?: string;
+}
+
 export interface Location {
     id?: string;
     name?: string;
@@ -111,15 +117,16 @@ export interface IMutation {
     changeCardStatus(stuNum?: string, status?: string, foundByUserId?: string, locationId?: string): ChangeCardStatusRes | Promise<ChangeCardStatusRes>;
     creatLocation(name: string, tagId: string): CreatLocationRes | Promise<CreatLocationRes>;
     creatLocationTag(name: string): CreatLocationTagRes | Promise<CreatLocationTagRes>;
-    creatDepartment(name: string): CreatDepartmentRes | Promise<CreatDepartmentRes>;
     creatCard(stuNum: string, name: string, departmentId: string, stuId?: string, userId?: string): CreatCardRes | Promise<CreatCardRes>;
+    creatDepartment(name: string): CreatDepartmentRes | Promise<CreatDepartmentRes>;
 }
 
 export interface IQuery {
+    getAuthorization(): GetAuthorizationRes | Promise<GetAuthorizationRes>;
     findCardStatus(stuNum?: string, stuId?: string, name?: string, userId?: string): FindCardStatusRes | Promise<FindCardStatusRes>;
     findAllLocationWithTags(): FindAllLocationWithTagsRes | Promise<FindAllLocationWithTagsRes>;
-    findAllDepartments(): FindAllDepartmentsRes | Promise<FindAllDepartmentsRes>;
     findOneCard(stuNum?: string, stuId?: string, name?: string, userId?: string): FindOneCardRes | Promise<FindOneCardRes>;
+    findAllDepartments(): FindAllDepartmentsRes | Promise<FindAllDepartmentsRes>;
     login(mobile: string, code: string): LoginRes | Promise<LoginRes>;
     sendCode(mobile: string): SendCodeRes | Promise<SendCodeRes>;
     temp__(): boolean | Promise<boolean>;
