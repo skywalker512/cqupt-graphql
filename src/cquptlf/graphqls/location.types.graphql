@@ -1,0 +1,47 @@
+type Query {
+  findAllLocationWithTags: FindAllLocationWithTagsRes
+}
+
+type Mutation {
+  creatLocation(
+    name: String!,
+    tagId: String!,
+  ): CreatLocationRes
+  creatLocationTag (
+    name: String!,
+  ): CreatLocationTagRes
+}
+
+type Location {
+  id: String
+  name: String
+}
+
+type LocationTag {
+  id: String
+  name: String
+}
+
+type LocationWithTags {
+  id: String
+  name: String
+  locations: [Location]
+}
+
+type CreatLocationRes {
+  code: Int
+  message: String
+  location: Location
+}
+
+type CreatLocationTagRes {
+  code: Int
+  message: String
+  locationTag: LocationTag
+}
+
+type FindAllLocationWithTagsRes {
+  code: Int
+  message: String
+  locationWithTags: [LocationWithTags]
+}

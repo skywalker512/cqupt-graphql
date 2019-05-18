@@ -10,6 +10,11 @@ export namespace cqupt_lf_be {
          * Returns the CardController service client.
          */
         getCardController(): cqupt_lf_be.CardController;
+
+        /**
+         * Returns the LocationController service client.
+         */
+        getLocationController(): cqupt_lf_be.LocationController;
     }
 
     /** Builder for an RPC service server. */
@@ -20,6 +25,12 @@ export namespace cqupt_lf_be {
          * @param impl CardController service implementation
          */
         addCardController(impl: cqupt_lf_be.CardController): cqupt_lf_be.ServerBuilder;
+
+        /**
+         * Adds a LocationController service implementation.
+         * @param impl LocationController service implementation
+         */
+        addLocationController(impl: cqupt_lf_be.LocationController): cqupt_lf_be.ServerBuilder;
     }
 
     /** Constructs a new CardController service. */
@@ -56,6 +67,9 @@ export namespace cqupt_lf_be {
 
         /** CardWithStatus foundAt */
         foundAt?: (string|null);
+
+        /** CardWithStatus foundLocation */
+        foundLocation?: (cqupt_lf_be.Location|null);
     }
 
     /** Properties of a FindCardStatusReq. */
@@ -95,6 +109,12 @@ export namespace cqupt_lf_be {
 
         /** ChangeCardStatusReq status */
         status?: (string|null);
+
+        /** ChangeCardStatusReq foundByUserId */
+        foundByUserId?: (string|null);
+
+        /** ChangeCardStatusReq locationId */
+        locationId?: (string|null);
     }
 
     /** Properties of a ChangeCardStatusRes. */
@@ -108,6 +128,127 @@ export namespace cqupt_lf_be {
 
         /** ChangeCardStatusRes card */
         card?: (cqupt_lf_be.CardWithStatus|null);
+    }
+
+    /** Constructs a new LocationController service. */
+    export interface LocationController {
+
+        /**
+         * Calls CreatLocation.
+         * @param request CreatLocationReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        creatLocation(request: cqupt_lf_be.CreatLocationReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CreatLocationRes>;
+
+        /**
+         * Calls CreatLocationTag.
+         * @param request CreatLocationTagReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        creatLocationTag(request: cqupt_lf_be.CreatLocationTagReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.CreatLocationTagRes>;
+
+        /**
+         * Calls FindAllLocationWithTags.
+         * @param request FindAllLocationWithTagsReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        findAllLocationWithTags(request: cqupt_lf_be.FindAllLocationWithTagsReq, metadata?: grpc.Metadata): Observable<cqupt_lf_be.FindAllLocationWithTagsRes>;
+    }
+
+    /** Properties of a Location. */
+    export interface Location {
+
+        /** Location id */
+        id?: (string|null);
+
+        /** Location name */
+        name?: (string|null);
+    }
+
+    /** Properties of a LocationTag. */
+    export interface LocationTag {
+
+        /** LocationTag id */
+        id?: (string|null);
+
+        /** LocationTag name */
+        name?: (string|null);
+    }
+
+    /** Properties of a LocationWithTags. */
+    export interface LocationWithTags {
+
+        /** LocationWithTags id */
+        id?: (string|null);
+
+        /** LocationWithTags name */
+        name?: (string|null);
+
+        /** LocationWithTags locations */
+        locations?: (cqupt_lf_be.Location[]|null);
+    }
+
+    /** Properties of a CreatLocationReq. */
+    export interface CreatLocationReq {
+
+        /** CreatLocationReq name */
+        name?: (string|null);
+
+        /** CreatLocationReq tagId */
+        tagId?: (string|null);
+    }
+
+    /** Properties of a CreatLocationRes. */
+    export interface CreatLocationRes {
+
+        /** CreatLocationRes code */
+        code?: (number|null);
+
+        /** CreatLocationRes message */
+        message?: (string|null);
+
+        /** CreatLocationRes location */
+        location?: (cqupt_lf_be.Location|null);
+    }
+
+    /** Properties of a CreatLocationTagReq. */
+    export interface CreatLocationTagReq {
+
+        /** CreatLocationTagReq name */
+        name?: (string|null);
+    }
+
+    /** Properties of a CreatLocationTagRes. */
+    export interface CreatLocationTagRes {
+
+        /** CreatLocationTagRes code */
+        code?: (number|null);
+
+        /** CreatLocationTagRes message */
+        message?: (string|null);
+
+        /** CreatLocationTagRes locationTag */
+        locationTag?: (cqupt_lf_be.LocationTag|null);
+    }
+
+    /** Properties of a FindAllLocationWithTagsReq. */
+    export interface FindAllLocationWithTagsReq {
+    }
+
+    /** Properties of a FindAllLocationWithTagsRes. */
+    export interface FindAllLocationWithTagsRes {
+
+        /** FindAllLocationWithTagsRes code */
+        code?: (number|null);
+
+        /** FindAllLocationWithTagsRes message */
+        message?: (string|null);
+
+        /** FindAllLocationWithTagsRes locationWithTags */
+        locationWithTags?: (cqupt_lf_be.LocationWithTags[]|null);
     }
 }
 

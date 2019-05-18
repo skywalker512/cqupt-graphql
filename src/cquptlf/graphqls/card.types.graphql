@@ -11,6 +11,8 @@ type Mutation {
   changeCardStatus(
     stuNum: String,
     status: String,
+    foundByUserId: String,
+    locationId: String,
   ): ChangeCardStatusRes
 }
 
@@ -19,6 +21,7 @@ type CardWithStatus {
   status: String
   lostAt: String
   foundAt: String
+  foundLocation: Location
 }
 
 type FindCardStatusRes {
