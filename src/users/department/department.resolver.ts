@@ -1,7 +1,8 @@
 import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
-import { Inject, OnModuleInit } from '@nestjs/common';
+import { Inject, OnModuleInit, UseGuards } from '@nestjs/common';
 import { cqupt_user } from '../../grpc/generated';
 import { GrpcClientFactory } from '../../grpc/grpc.client-factory';
+import { SuperAuthGuard } from '@/src/auth/auth.guard';
 
 @Resolver('Department')
 export class DepartmentResolver implements OnModuleInit {
@@ -14,6 +15,7 @@ export class DepartmentResolver implements OnModuleInit {
   private departmentService: cqupt_user.DepartmentController
 
   @Mutation()
+  @UseGuards(SuperAuthGuard)
   async creatDepartment(@Args() agrs: cqupt_user.CreatDepartmentReq) {
     return await this.departmentService.creatDepartment(agrs)
   }

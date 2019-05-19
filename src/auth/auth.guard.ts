@@ -19,3 +19,21 @@ export class AuthGuard implements CanActivate {
     }
   }
 }
+
+@Injectable()
+export class SuperAuthGuard implements CanActivate {
+  constructor(
+    @Inject(AuthService) private readonly authService: AuthService
+  ) { }
+  async canActivate(context: ExecutionContext):  Promise<boolean> {
+    const gqlCtx = GqlExecutionContext.create(context);
+    const req = gqlCtx.getContext().req
+
+    const user = await this.authService.validateUser(req)
+    if(user.decodedToken.role === 'admin') {
+      return true
+    } else {
+      return false
+    }
+  }
+}

@@ -1,5 +1,6 @@
 type Query {
     login(mobile: String! code: String!): LoginRes
+    superAdminLogin(mobile: String! code: String!): SuperAdminLoginRes
     sendCode(mobile: String!): SendCodeRes
 }
 
@@ -22,6 +23,13 @@ type TokenInfo {
 }
 
 type LoginRes {
+    code: Int
+    message: String
+    user: UserData
+    tokenInfo: TokenInfo
+}
+
+type SuperAdminLoginRes {
     code: Int
     message: String
     user: UserData

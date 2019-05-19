@@ -1,8 +1,7 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
-import { Inject, UseGuards, OnModuleInit } from '@nestjs/common';
+import { Inject, OnModuleInit } from '@nestjs/common';
 import { cqupt_user, cqupt_api } from '../grpc/generated';
-import { AuthGuard } from '../auth/auth.guard';
 
 @Resolver('Users')
 export class UsersResolver implements OnModuleInit {
@@ -25,7 +24,13 @@ export class UsersResolver implements OnModuleInit {
   }
 
   @Query()
-  // @UseGuards(AuthGuard)
+  async superAdminLogin(@Args() args: { mobile: string, code: string }): Promise<cqupt_user.LoginRes> {
+    const { mobile } = args
+    await this.qcloudsmsService.validateCode(args).toPromise()
+    return await this.userService.superAdminLogin({ data: { mobile } }).toPromise()
+  }
+
+  @Query()
   async sendCode(@Args() args: { mobile: string }) {
     return { code: 200, message: '验证码发送成功' }
   }

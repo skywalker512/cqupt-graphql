@@ -442,6 +442,14 @@ export namespace cqupt_user {
         login(request: cqupt_user.LoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.LoginRes>;
 
         /**
+         * Calls SuperAdminLogin.
+         * @param request SuperAdminLoginReq message or plain object
+         *  * @param metadata Optional metadata
+         * @returns Promise
+         */
+        superAdminLogin(request: cqupt_user.SuperAdminLoginReq, metadata?: grpc.Metadata): Observable<cqupt_user.SuperAdminLoginRes>;
+
+        /**
          * Calls FindOneUser.
          * @param request FindOneUserReq message or plain object
          *  * @param metadata Optional metadata
@@ -540,6 +548,32 @@ export namespace cqupt_user {
         user?: (cqupt_user.UserData|null);
 
         /** LoginRes tokenInfo */
+        tokenInfo?: (cqupt_user.TokenInfo|null);
+    }
+
+    /** Properties of a SuperAdminLoginReq. */
+    export interface SuperAdminLoginReq {
+
+        /** SuperAdminLoginReq data */
+        data?: (cqupt_user.UserData|null);
+
+        /** SuperAdminLoginReq code */
+        code?: (string|null);
+    }
+
+    /** Properties of a SuperAdminLoginRes. */
+    export interface SuperAdminLoginRes {
+
+        /** SuperAdminLoginRes code */
+        code?: (number|null);
+
+        /** SuperAdminLoginRes message */
+        message?: (string|null);
+
+        /** SuperAdminLoginRes user */
+        user?: (cqupt_user.UserData|null);
+
+        /** SuperAdminLoginRes tokenInfo */
         tokenInfo?: (cqupt_user.TokenInfo|null);
     }
 

@@ -34,7 +34,7 @@ export class AuthService implements OnModuleInit {
     }
 
     try {
-      const decodedToken = <{ mobile?: string, iat: number, exp: number }>jwt.verify(token, 'secretKey');
+      const decodedToken = <{ mobile?: string, iat: number, exp: number, role: string }>jwt.verify(token, 'secretKey');
       const loginType = Object.keys(decodedToken)[0]
       const user = { loginType, loginInfo: decodedToken[loginType], decodedToken }
       return user

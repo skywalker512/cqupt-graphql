@@ -1,7 +1,8 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { OnModuleInit, Inject } from '@nestjs/common';
+import { OnModuleInit, Inject, UseGuards } from '@nestjs/common';
 import { GrpcClientFactory } from '@/src/grpc/grpc.client-factory';
 import { cqupt_lf_be } from '@/src/grpc/generated';
+import { AuthGuard } from '@/src/auth/auth.guard';
 
 @Resolver('Card')
 export class CardResolver implements OnModuleInit {
@@ -20,6 +21,7 @@ export class CardResolver implements OnModuleInit {
   }
 
   @Mutation()
+  @UseGuards(AuthGuard)
   async changeCardStatus(@Args() agrs: cqupt_lf_be.ChangeCardStatusReq ) {
     return await this.cardService.changeCardStatus(agrs)
   }
