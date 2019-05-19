@@ -37,35 +37,29 @@ export namespace cqupt_api {
     export interface BaiduocrController {
 
         /**
-         * Calls GetAuthorization.
-         * @param request GetAuthorizationReq message or plain object
+         * Calls GetOcrToken.
+         * @param request GetOcrTokenReq message or plain object
          *  * @param metadata Optional metadata
          * @returns Promise
          */
-        getAuthorization(request: cqupt_api.GetAuthorizationReq, metadata?: grpc.Metadata): Observable<cqupt_api.GetAuthorizationRes>;
+        getOcrToken(request: cqupt_api.GetOcrTokenReq, metadata?: grpc.Metadata): Observable<cqupt_api.GetOcrTokenRes>;
     }
 
-    /** Properties of a GetAuthorizationReq. */
-    export interface GetAuthorizationReq {
-
-        /** GetAuthorizationReq method */
-        method?: (string|null);
-
-        /** GetAuthorizationReq uri */
-        uri?: (string|null);
+    /** Properties of a GetOcrTokenReq. */
+    export interface GetOcrTokenReq {
     }
 
-    /** Properties of a GetAuthorizationRes. */
-    export interface GetAuthorizationRes {
+    /** Properties of a GetOcrTokenRes. */
+    export interface GetOcrTokenRes {
 
-        /** GetAuthorizationRes code */
+        /** GetOcrTokenRes code */
         code?: (number|null);
 
-        /** GetAuthorizationRes message */
+        /** GetOcrTokenRes message */
         message?: (string|null);
 
-        /** GetAuthorizationRes authorization */
-        authorization?: (string|null);
+        /** GetOcrTokenRes accessToken */
+        accessToken?: (string|null);
     }
 
     /** Constructs a new QcloudsmsController service. */

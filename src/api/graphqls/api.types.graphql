@@ -1,9 +1,9 @@
 type Query {
-  getAuthorization: GetAuthorizationRes
+  getOcrToken: GetOcrTokenRes
 }
 
-type GetAuthorizationRes {
+type GetOcrTokenRes {
   code: Int
   message: String
-  authorization: String
+  accessToken: String
 }

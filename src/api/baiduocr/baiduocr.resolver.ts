@@ -14,7 +14,7 @@ export class BaiduocrResolver implements OnModuleInit {
   private baiduocrService: cqupt_api.BaiduocrController
 
   @Query()
-  async getAuthorization(@Args() agrs: cqupt_api.GetAuthorizationReq ) {
-    return await this.baiduocrService.getAuthorization(agrs).toPromise()
+  async getOcrToken(@Args() agrs: cqupt_api.GetOcrTokenReq ) {
+    return await this.baiduocrService.getOcrToken(agrs).toPromise()
   }
 }

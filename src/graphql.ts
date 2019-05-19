@@ -84,10 +84,10 @@ export interface FindOneCardRes {
     card?: Card;
 }
 
-export interface GetAuthorizationRes {
+export interface GetOcrTokenRes {
     code?: number;
     message?: string;
-    authorization?: string;
+    accessToken?: string;
 }
 
 export interface Location {
@@ -122,7 +122,7 @@ export interface IMutation {
 }
 
 export interface IQuery {
-    getAuthorization(): GetAuthorizationRes | Promise<GetAuthorizationRes>;
+    getOcrToken(): GetOcrTokenRes | Promise<GetOcrTokenRes>;
     sendVerifyCode(mobile: string): SendVerifyCodeRes | Promise<SendVerifyCodeRes>;
     findAllLocationWithTags(): FindAllLocationWithTagsRes | Promise<FindAllLocationWithTagsRes>;
     findCardStatus(stuNum?: string, stuId?: string, name?: string, userId?: string): FindCardStatusRes | Promise<FindCardStatusRes>;
