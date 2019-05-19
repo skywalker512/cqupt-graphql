@@ -4,13 +4,13 @@ import { join } from 'path';
 
 @Injectable()
 export class GrpcClientFactory {
-    @Client(generateGrpcOptions('localhost:50053', 'cqupt_user', 'cqupt_user.proto'))
+    @Client(generateGrpcOptions('cqupt-user:50053', 'cqupt_user', 'cqupt_user.proto'))
     public readonly userModuleClient: ClientGrpc;
 
-    @Client(generateGrpcOptions('localhost:50054', 'cqupt_lf_be', 'cqupt_lf_be.proto'))
+    @Client(generateGrpcOptions('cqupt-lf-be:50054', 'cqupt_lf_be', 'cqupt_lf_be.proto'))
     public readonly cquptModuleClient: ClientGrpc;
 
-    @Client(generateGrpcOptions('localhost:50055', 'cqupt_api', 'cqupt_api.proto'))
+    @Client(generateGrpcOptions('cqupt-api:50055', 'cqupt_api', 'cqupt_api.proto'))
     public readonly apiModuleClient: ClientGrpc;
 }
 
